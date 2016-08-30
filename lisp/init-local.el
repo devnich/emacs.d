@@ -48,6 +48,14 @@
 ;; Use python 3 as the default interpreter
 (setq python-shell-interpreter "python3")
 
+;;; Suppress yes/no prompt when quitting shells
+(add-hook 'comint-exec-hook
+          (lambda () (set-process-query-on-exit-flag (get-buffer-process (current-buffer)) nil)))
+
+;;; Suppress yes/no prompt when quitting terminals
+(add-hook 'term-exec-hook
+          (lambda () (set-process-query-on-exit-flag (get-buffer-process (current-buffer)) nil)))
+
 ;; -----------------------------------
 ;; Customizations to add as necessary
 ;; -----------------------------------
