@@ -1,1 +1,1 @@
-((emacs-lisp-mode . ((no-byte-compile t))))
+;; ((emacs-lisp-mode . ((no-byte-compile t))))

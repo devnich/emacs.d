@@ -12,7 +12,7 @@
   (require 'dired+)
   (require 'dired-sort)
   (when (fboundp 'global-dired-hide-details-mode)
-    (global-dired-hide-details-mode -1))
+    (global-dired-hide-details-mode 1))
   (setq dired-recursive-deletes 'top)
   (define-key dired-mode-map [mouse-2] 'dired-find-file)
   (add-hook 'dired-mode-hook
