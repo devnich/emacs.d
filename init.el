@@ -81,7 +81,8 @@
 (require 'init-git)
 (require 'init-github)
 
-(require 'init-projectile)
+;;; projectile causes tramp to hang
+;; (require 'init-projectile)
 
 (require 'init-compile)
 (require 'init-crontab)
@@ -101,7 +102,8 @@
   (require 'init-haskell))
 (require 'init-elm)
 (require 'init-ruby-mode)
-(require 'init-rails)
+;;; projectile causes tramp to hang
+;; (require 'init-rails)
 (require 'init-sql)
 
 (require 'init-paredit)
