@@ -1,0 +1,11 @@
+* How to manage vendor merging
+
+# Purcell github repository, used for vendor merging:
+#   git checkout master
+#   git pull uptream master
+#   git push origin master
+
+* Preserving files from merge
+git merge --no-commit <merge-branch>
+git reset myfile.txt
+git commit -m "merged <merge-branch>"
