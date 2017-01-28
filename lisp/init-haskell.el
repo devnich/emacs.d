@@ -11,6 +11,7 @@
 (when (maybe-require-package 'intero)
   (after-load 'haskell-mode
     (add-hook 'haskell-mode-hook 'intero-mode)
+    (add-hook 'haskell-mode-hook 'eldoc-mode)
     )
   (after-load 'intero
     (after-load 'flycheck
@@ -31,6 +32,9 @@
 (add-hook 'haskell-mode-hook 'haskell-auto-insert-module-template)
 
 (setq-default haskell-stylish-on-save t)
+
+(when (maybe-require-package 'hindent)
+  (add-hook 'haskell-mode-hook 'hindent-mode))
 
 (maybe-require-package 'hayoo)
 (after-load 'haskell-mode
