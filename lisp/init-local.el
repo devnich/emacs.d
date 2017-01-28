@@ -4,6 +4,8 @@
 
 ;; Use a nice font
 (set-frame-font "DejaVu Sans Mono-13")
+;; (set-face-attribute 'default nil :font "DejaVu Sans Mono-13")
+;; (set-face-attribute 'mode-line nil :font "DejaVu Sans-12")
 
 ;; Scroll single line
 (setq scroll-step 1)
@@ -14,10 +16,13 @@
 
 ;; Invoke terminal with multi-term
 (require-package 'multi-term)
-(setq multi-term-buffer-name "~zsh")
-(setq multi-term-program "/bin/zsh")            ;; use zsh in terminal
+(setq multi-term-buffer-name "~fish")
+(setq multi-term-program "/usr/bin/fish")       ;; use fish in terminal
 (global-set-key (kbd "C-c T") 'multi-term)      ;; create new terminal buffer
 (global-set-key (kbd "C-c t") 'multi-term-next) ;; switch terminals
+
+;;; Send function keys through to underlying term process
+;; http://stackoverflow.com/questions/2396680/let-emacs-send-fn-keys-to-programs-in-ansi-term
 
 ;; Get root access to files on demand. This function advises ido-find-file, so
 ;; it's invoked via C-x C-f
@@ -55,6 +60,10 @@
 ;;; Suppress yes/no prompt when quitting terminals
 (add-hook 'term-exec-hook
           (lambda () (set-process-query-on-exit-flag (get-buffer-process (current-buffer)) nil)))
+
+;; Set which flags are passed to ls for dired display
+(setq dired-listing-switches "-al --block-size=1M --group-directories-first")
+;; (setq dired-listing-switches "-ag --block-size=1M --no-group --group-directories-first")
 
 ;; -----------------------------------
 ;; Customizations to add as necessary
