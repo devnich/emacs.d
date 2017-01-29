@@ -83,8 +83,8 @@
 (require 'init-git)
 (require 'init-github)
 
-;;; projectile causes tramp to hang
-;; (require 'init-projectile)
+;;; projectile causes tramp to hang - testing
+(require 'init-projectile)
 
 (require 'init-compile)
 (require 'init-crontab)
@@ -100,12 +100,13 @@
 (require 'init-css)
 (require 'init-haml)
 (require 'init-python-mode)
+(require 'init-web)
 (unless (version<= emacs-version "24.3")
   (require 'init-haskell))
 (require 'init-elm)
 (require 'init-ruby-mode)
-;;; projectile causes tramp to hang
-;; (require 'init-rails)
+;;; projectile causes tramp to hang - testing
+(require 'init-rails)
 (require 'init-sql)
 
 (require 'init-paredit)

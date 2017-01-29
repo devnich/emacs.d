@@ -3,9 +3,11 @@
 ;; -----------------------------------
 
 ;; Use a nice font
+(setq font-use-system-font nil)
 (set-frame-font "DejaVu Sans Mono-13")
+;; (set-face-attribute 'mode-line nil :font "Cantarell-12")
+;; (set-face-attribute 'mode-line nil :font "DejaVu Serif Condensed:italic:medium-12")
 ;; (set-face-attribute 'default nil :font "DejaVu Sans Mono-13")
-;; (set-face-attribute 'mode-line nil :font "DejaVu Sans-12")
 
 ;; Scroll single line
 (setq scroll-step 1)
