@@ -4,13 +4,16 @@
 
 ;; Use a nice font
 (setq font-use-system-font nil)
-(set-frame-font "DejaVu Sans Mono-13")
+(set-frame-font "DejaVu Sans Mono-14")
 ;; (set-face-attribute 'mode-line nil :font "Cantarell-12")
 ;; (set-face-attribute 'mode-line nil :font "DejaVu Serif Condensed:italic:medium-12")
 ;; (set-face-attribute 'default nil :font "DejaVu Sans Mono-13")
 
 ;; Scroll single line
 (setq scroll-step 1)
+
+;; Set default column width
+(setq-default fill-column 80)
 
 ;; Invoke eshell on startup
 (setq eshell-buffer-name "~$")
@@ -48,9 +51,10 @@
 (global-set-key [f5] 'call-last-kbd-macro)
 
 ;; Add syntax highlighting for Drupal PHP files
-(add-to-list 'auto-mode-alist '("\\.module$" . php-mode))
-(add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
-(add-to-list 'auto-mode-alist '("\\.install$" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.module\\" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.inc\\" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.install\\" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.theme\\" . php-mode))
 
 ;; Use python 3 as the default interpreter
 (setq python-shell-interpreter "python3")
