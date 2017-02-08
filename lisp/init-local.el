@@ -51,10 +51,10 @@
 (global-set-key [f5] 'call-last-kbd-macro)
 
 ;; Add syntax highlighting for Drupal PHP files
-(add-to-list 'auto-mode-alist '("\\.module\\" . php-mode))
-(add-to-list 'auto-mode-alist '("\\.inc\\" . php-mode))
-(add-to-list 'auto-mode-alist '("\\.install\\" . php-mode))
-(add-to-list 'auto-mode-alist '("\\.theme\\" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.module$" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.install$" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.theme$" . php-mode))
 
 ;; Use python 3 as the default interpreter
 (setq python-shell-interpreter "python3")
