@@ -14,7 +14,8 @@
   (require-package 'flycheck-clojure)
   (after-load 'clojure-mode
     (after-load 'flycheck
-      (flycheck-clojure-setup))))
+      (after-load 'cider
+        (flycheck-clojure-setup)))))
 
 
 (provide 'init-clojure-cider)
