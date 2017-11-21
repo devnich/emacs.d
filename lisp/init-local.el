@@ -50,6 +50,9 @@
 (defalias 'qrr 'query-replace-regexp)
 (global-set-key [f5] 'call-last-kbd-macro)
 
+;;; Defer fontifying until user is inactive
+(setq jit-lock-stealth-time 10)
+
 ;; Add syntax highlighting for Drupal PHP files
 (add-to-list 'auto-mode-alist '("\\.module$" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
