@@ -23,6 +23,12 @@ git merge --no-commit <merge-branch>
 git reset <file-name>
 git commit -m "merged <merge-branch>"
 
+* Files to preserve
+** lisp/init-local.el
+** lisp/init-multi-term.el
+** lisp/init-preload-local.el
+** lisp/init-web.el
+** vendor_merge.org
 * Updates
 ** Call -init files in init-local.el
 ** fullframe package can break things, check
