@@ -1,0 +1,48 @@
+#+STARTUP: showall indent
+
+* How to manage vendor branches
+** Origin: https://github.com/devnich/<repository>
+*** master: Used as vendor branch. This is our copy of the vendor's upstream repository.
+*** gilgamesh: Personal branch
+** Upstream: https://github.com/purcell/<repository>
+
+* Merging changes from vendor upstream
+** Check out vendor branch
+git checkout master
+** Pull changes from vendor's upstream
+git pull uptream master
+** Push changes to our own remote
+git push origin master
+** Merge changes into personal branch
+git checkout gilgamesh
+git merge master
+git push
+
+* Preserving local branch files during merge
+git merge --no-commit <merge-branch>
+git reset <file-name>
+git commit -m "merged <merge-branch>"
+
+* Updates
+** Call -init files in init-local.el
+** fullframe package can break things, check
+** Update ido hooks if necessary (moving from ido to ivy)
+** Update ibuffer hooks if necessary (moving from dired+ to something else)
+** Check init-python - does it assume anaconda?
+** updated menu-bar-mode if menu desired
+** org-ditaa-jar-path unbound - comment out after-load 'ob-ditaa...
+** some modes call projectile, which (used to) cause tramp to hang
+** clojure-cider sometimes breaks
+** delete content of .dir-locals?
+** set desktop-save-mode 0?
+** DONE Update default theme variable in init-local.el
+CLOSED: [2018-02-25 Sun 14:22]
+:LOGBOOK:
+- State "DONE"       from "NEXT"       [2018-02-25 Sun 14:22]
+:END:
+** Merge theme changes
+
+#-*- mode: org -*-
+;; Local Variables:
+;; eval: (visual-line-mode)
+;; End:
