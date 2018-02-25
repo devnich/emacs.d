@@ -31,6 +31,7 @@ git commit -m "merged <merge-branch>"
 ** vendor_merge.org
 * Updates
 ** Call -init files in init-local.el
+** global-dired-hide-details-mode?
 ** fullframe package can break things, check
 ** Update ido hooks if necessary (moving from ido to ivy)
 ** Update ibuffer hooks if necessary (moving from dired+ to something else)

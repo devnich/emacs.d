@@ -13,8 +13,8 @@
 
   (require-package 'flycheck-clojure)
   (after-load 'clojure-mode
-    (after-load 'flycheck
-      (after-load 'cider
+    (after-load 'cider
+      (after-load 'flycheck
         (flycheck-clojure-setup)))))
 
 
