@@ -29,25 +29,14 @@ git commit -m "merged <merge-branch>"
 ** lisp/init-preload-local.el
 ** lisp/init-web.el
 ** vendor_merge.org
+
 * Updates
-** Call -init files in init-local.el
 ** global-dired-hide-details-mode?
-** fullframe package can break things, check
 ** Update ido hooks if necessary (moving from ido to ivy)
 ** Update ibuffer hooks if necessary (moving from dired+ to something else)
-** Check init-python - does it assume anaconda?
-** updated menu-bar-mode if menu desired
-** org-ditaa-jar-path unbound - comment out after-load 'ob-ditaa...
-** some modes call projectile, which (used to) cause tramp to hang
 ** clojure-cider sometimes breaks
 ** delete content of .dir-locals?
-** set desktop-save-mode 0?
-** DONE Update default theme variable in init-local.el
-CLOSED: [2018-02-25 Sun 14:22]
-:LOGBOOK:
-- State "DONE"       from "NEXT"       [2018-02-25 Sun 14:22]
-:END:
-** Merge theme changes
+** Merge theme changes; reapply local choices
 
 #-*- mode: org -*-
 ;; Local Variables:

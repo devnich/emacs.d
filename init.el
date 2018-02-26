@@ -107,7 +107,7 @@
 (require 'init-rust)
 (require 'init-toml)
 (require 'init-yaml)
-(require 'init-docker)
+;; (require 'init-docker)
 (require 'init-terraform)
 ;;(require 'init-nix)
 (maybe-require-package 'nginx-mode)

@@ -28,6 +28,9 @@
 ;;; Scroll single line
 (setq scroll-step 1)
 
+;;; Add menu bar back
+(menu-bar-mode 1)
+
 ;;; Set default column width
 (setq-default fill-column 80)
 
@@ -37,6 +40,10 @@
 
 ;;; Defer fontifying until user is inactive
 (setq jit-lock-stealth-time 10)
+
+;;; Save desktop on exit
+(desktop-save-mode 1)
+;; (setq desktop-save t)
 
 ;;; -----------------------------------
 ;;; Shells
