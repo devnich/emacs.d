@@ -35,8 +35,6 @@ git commit -m "merged <merge-branch>"
 ** Update ido hooks if necessary (moving from ido to ivy)
 ** Update ibuffer hooks if necessary (moving from dired+ to something else)
 ** clojure-cider sometimes breaks
-** delete content of .dir-locals?
-** Merge theme changes; reapply local choices
 
 #-*- mode: org -*-
 ;; Local Variables:
