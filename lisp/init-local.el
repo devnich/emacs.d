@@ -4,6 +4,7 @@
 ;;; Call additional init files
 (require 'init-web)
 (require 'init-multi-term)
+;; (require 'init-slack)
 
 ;; Add syntax highlighting for Drupal PHP files
 (add-to-list 'auto-mode-alist '("\\.module$" . php-mode))

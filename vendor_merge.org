@@ -35,6 +35,8 @@ git commit -m "merged <merge-branch>"
 ** Update ido hooks if necessary (moving from ido to ivy)
 ** Update ibuffer hooks if necessary (moving from dired+ to something else)
 ** clojure-cider sometimes breaks
+** fix copy/paste in multi-term
+** add ibuffer filters for [default] non-vc groups
 
 #-*- mode: org -*-
 ;; Local Variables:
