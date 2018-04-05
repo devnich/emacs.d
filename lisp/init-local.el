@@ -99,19 +99,11 @@
 ;;C-j 'eval-print-last-sexp
 
 ;; Add keyboard bindings for terminal if necessary
-;;  1. Mimic shell mode toggle
-;; (add-to-list 'term-bind-key-alist '("C-c C-j" . term-line-mode))
-;; (add-to-list 'term-bind-key-alist '("C-c C-k" . term-char-mode))
-;;  2. Define additional keys that bypass Emacs and go to the remote terminal
+;;  Define additional keys that bypass Emacs and go to the remote terminal
 ;; (defun term-send-esc ()
 ;;   "Send ESC in term mode"
 ;;   (interactive)
 ;;   (term-send-raw-string "\e"))
-
-;; (add-hook 'term-mode-hook
-;;           (lambda () (define-key term-raw-map (kbd "ESC") 'term-send-esc)))
-;; (add-hook 'term-mode-hook
-;;           (lambda () (define-key term-raw-map (kbd "C-y") 'term-paste)))
 
 ;; Add syntax highlighting for drush make if necessary
 ;; (define-generic-mode
