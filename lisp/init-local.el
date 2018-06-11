@@ -16,6 +16,9 @@
 ;;; Use python 3 as the default python interpreter
 (setq python-shell-interpreter "python3")
 
+;;; Use sqlite3 as default sqlite
+(setq sql-sqlite-program "/usr/bin/sqlite3")
+
 ;;; -----------------------------------
 ;;; User interface
 ;;; -----------------------------------
@@ -46,6 +49,12 @@
 ;;; Save desktop on exit
 (desktop-save-mode 1)
 ;; (setq desktop-save t)
+
+;;; Use system trash instead of immediate delete
+(setq delete-by-moving-to-trash t)
+
+;;; Suppress entering debug on error
+(setq debug-on-error nil)
 
 ;;; -----------------------------------
 ;;; Shells

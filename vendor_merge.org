@@ -26,6 +26,7 @@ git commit -m "merged <merge-branch>"
 * Files to preserve
 ** lisp/init-local.el
 ** lisp/init-multi-term.el
+** lisp/init-org.el
 ** lisp/init-preload-local.el
 ** lisp/init-web.el
 ** vendor_merge.org
@@ -35,10 +36,12 @@ git commit -m "merged <merge-branch>"
 ** Update ido hooks if necessary (moving from ido to ivy)
 ** Update ibuffer hooks if necessary (moving from dired+ to something else)
 ** clojure-cider sometimes breaks
-** fix copy/paste in multi-term
 ** add ibuffer filters for [default] non-vc groups
 
-#-*- mode: org -*-
+
+* COMMENT Footer
 ;; Local Variables:
 ;; eval: (visual-line-mode)
+;; eval: (flyspell-mode)
 ;; End:
+
