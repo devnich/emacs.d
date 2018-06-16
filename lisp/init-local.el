@@ -19,6 +19,9 @@
 ;;; Use sqlite3 as default sqlite
 (setq sql-sqlite-program "/usr/bin/sqlite3")
 
+;;; Run rustfmt on .rs files on save
+(setq rust-format-on-save t)
+
 ;;; -----------------------------------
 ;;; User interface
 ;;; -----------------------------------
@@ -77,6 +80,7 @@
 ;;; Get root access to files on demand. This function advises ido-find-file, so
 ;;; it's invoked via C-x C-f
 ;;; cf. http://emacsredux.com/blog/2013/04/21/edit-files-as-root/
+;;; Doesn't currently work with ivy
 (defadvice ido-find-file (after find-file-sudo activate)
   "Find file as root if necessary."
   (unless (and buffer-file-name
