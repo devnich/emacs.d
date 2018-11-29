@@ -4,14 +4,13 @@
 ;;; Call additional init files
 (require 'init-web)
 (require 'init-multi-term)
-;; (require 'init-slack)
 
 ;; Add syntax highlighting for Drupal PHP files
 (add-to-list 'auto-mode-alist '("\\.module$" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.install$" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.theme$" . php-mode))
-(add-to-list 'auto-mode-alist '("\\.profile$" . php-mode))
+;; (add-to-list 'auto-mode-alist '("\\.profile$" . php-mode)) interferes with .profile file
 
 ;;; Use python 3 as the default python interpreter
 (setq python-shell-interpreter "python3")
@@ -77,16 +76,6 @@
 ;;; -----------------------------------
 ;;; File navigation
 ;;; -----------------------------------
-;;; Get root access to files on demand. This function advises ido-find-file, so
-;;; it's invoked via C-x C-f
-;;; cf. http://emacsredux.com/blog/2013/04/21/edit-files-as-root/
-;;; Doesn't currently work with ivy
-(defadvice ido-find-file (after find-file-sudo activate)
-  "Find file as root if necessary."
-  (unless (and buffer-file-name
-               (file-writable-p buffer-file-name))
-    (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
-
 ;;; Move cursor to the most recently visited buffer in ibuffer
 (defadvice ibuffer (around ibuffer-point-to-most-recent) ()
            "Open ibuffer with cursor pointed to most recent buffer name"
@@ -94,6 +83,9 @@
              ad-do-it
              (ibuffer-jump-to-buffer recent-buffer-name)))
 (ad-activate 'ibuffer)
+
+;;; Return buffer list in a constant order; use in ibuffer-vc.el to maintain sort order of VC groups.
+;; (sort (buffer-list) '(lambda (a b) (string< (buffer-name a) (buffer-name b))))
 
 ;;; Set which flags are passed to ls for dired display
 (setq dired-listing-switches "-al --block-size=1M --group-directories-first")
@@ -132,10 +124,6 @@
 ;;   nil
 ;;   "A mode for Drush .make and .info files"
 ;;   )
-
-;; Add syntax highlighting for PHP-like files if necessary
-;; (add-to-list 'auto-mode-alist '("\\.profile$" . php-mode))
-;; (add-to-list 'auto-mode-alist '("\\.engine$" . php-mode))
 
 ;; (set-face-attribute 'mode-line nil :font "Cantarell-12")
 ;; (set-face-attribute 'mode-line nil :font "DejaVu Serif Condensed:italic:medium-12")
