@@ -58,6 +58,14 @@
 ;;; Suppress entering debug on error
 (setq debug-on-error nil)
 
+;;; Add height and width shortcuts to image-mode
+(add-hook 'image-mode-hook
+          (lambda ()
+            (define-key image-mode-map "h"
+              'image-transform-fit-to-height)
+            (define-key image-mode-map "w"
+              'image-transform-fit-to-width)))
+
 ;;; -----------------------------------
 ;;; Shells
 ;;; -----------------------------------
