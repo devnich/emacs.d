@@ -96,7 +96,7 @@
 ;; (sort (buffer-list) '(lambda (a b) (string< (buffer-name a) (buffer-name b))))
 
 ;;; Set which flags are passed to ls for dired display
-(setq dired-listing-switches "-al --block-size=1M --group-directories-first")
+;; (setq dired-listing-switches "-al --block-size=1M --group-directories-first")
 ;; (setq dired-listing-switches "-ag --block-size=1M --no-group --group-directories-first")
 
 (provide 'init-local)
