@@ -1,4 +1,4 @@
-#+STARTUP: showall indent
+#+STARTUP: showeverything indent
 
 * How to manage vendor branches
 ** Origin: https://github.com/devnich/<repository>
@@ -33,11 +33,20 @@ git commit -m "merged <merge-branch>"
 
 * Updates
 ** global-dired-hide-details-mode?
-** Update ido hooks if necessary (moving from ido to ivy)
-** Update ibuffer hooks if necessary (moving from dired+ to something else)
 ** clojure-cider sometimes breaks
 ** add ibuffer filters for [default] non-vc groups
 
+** cursor lag tweaks
+
+* Common tasks
+** Mark whole buffer
+C-x h
+** Remove empty line
+M-x flush-lines
+^$
+** Remove matching line
+M-x flush-lines
+[regex]
 
 * COMMENT Footer
 ;; Local Variables:

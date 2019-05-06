@@ -11,8 +11,9 @@
   (global-set-key (kbd "M-?") 'ag-project))
 
 (when (and (executable-find "rg")
-           (maybe-require-package 'rg))
-  (global-set-key (kbd "M-?") 'rg-project))
+           (maybe-require-package 'deadgrep))
+  (global-set-key (kbd "M-?") 'rg-project)
+  (global-set-key (kbd "<f5>") #'deadgrep))
 
 
 (provide 'init-grep)
