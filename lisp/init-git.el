@@ -5,6 +5,8 @@
 (require-package 'gitconfig-mode)
 (maybe-require-package 'git-timemachine)
 
+;;; magit-popup no longer automatically included by magit
+(maybe-require-package 'magit-popup)
 
 (when (maybe-require-package 'magit)
   (setq-default magit-diff-refine-hunk t)
