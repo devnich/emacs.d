@@ -11,6 +11,8 @@
  (fullframe ibuffer ibuffer-quit))
 
 ;; (require-package 'ibuffer-vc)
+;;; Load from /site-lisp/ibuffer-vc
+(require 'ibuffer-vc)
 
 (defun ibuffer-set-up-preferred-filters ()
   (ibuffer-vc-set-filter-groups-by-vc-root)
