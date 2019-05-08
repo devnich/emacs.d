@@ -6,9 +6,10 @@
 
 ;;; Code:
 
-(require-package 'fullframe)
-(after-load 'ibuffer
- (fullframe ibuffer ibuffer-quit))
+;;; This closes all other frames
+;; (require-package 'fullframe)
+;; (after-load 'ibuffer
+;;   (fullframe ibuffer ibuffer-quit))
 
 ;; (require-package 'ibuffer-vc)
 ;;; Load from /site-lisp/ibuffer-vc
