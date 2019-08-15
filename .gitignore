@@ -54,3 +54,4 @@ site-lisp/**
 .cache/
 /forge-database.sqlite
 /transient
+/*.cache
