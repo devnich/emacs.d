@@ -30,7 +30,7 @@
 
 ;;; Use a nice font
 (setq font-use-system-font nil)
-(set-frame-font "DejaVu Sans Mono-14")
+(set-frame-font "DejaVu Sans Mono-10")
 
 ;;; Scroll single line
 (setq scroll-step 1)
