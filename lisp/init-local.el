@@ -99,6 +99,9 @@
 (setq dired-listing-switches "-al --block-size=1M --group-directories-first")
 ;; (setq dired-listing-switches "-ag --block-size=1M --no-group --group-directories-first")
 
+;;; Look for .org files to include in agenda
+(setq org-agenda-files (quote ("~/Dropbox/Library")))
+
 (provide 'init-local)
 
 
