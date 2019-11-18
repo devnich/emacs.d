@@ -1,6 +1,18 @@
 ;;; -----------------------------------
+;;; Useful keyboard shortcuts
+;;; -----------------------------------
+;;; f1: help
+;;; f3: kmacro-start-macro-or-insert-counter
+;;; f4: kmacro-end-or-call-macro
+;;; f5: deadgrep
+;;; need alterate keybinding for paredit-splice-sexp. See this comment in init-paredit.el:
+;;;    Suppress certain paredit keybindings to avoid clashes, including
+;;;    my global binding of M-?
+
+;;; -----------------------------------
 ;;; Mode additions
 ;;; -----------------------------------
+
 ;;; Call additional init files
 (require 'init-web)
 (require 'init-multi-term)
@@ -52,7 +64,6 @@
 
 ;;; Add some keyboard shortcuts
 (defalias 'qrr 'query-replace-regexp)
-;; (global-set-key [f5] 'call-last-kbd-macro)
 
 ;;; Defer fontifying when input is pending
 (setq jit-lock-defer-time 0)
@@ -86,6 +97,7 @@
 ;;; -----------------------------------
 ;;; Shells
 ;;; -----------------------------------
+
 ;;; Invoke eshell on startup
 (setq eshell-buffer-name "~$")
 (add-hook 'emacs-startup-hook 'eshell)
@@ -101,6 +113,7 @@
 ;;; -----------------------------------
 ;;; File navigation
 ;;; -----------------------------------
+
 ;;; Move cursor to the most recently visited buffer in ibuffer
 (defadvice ibuffer (around ibuffer-point-to-most-recent) ()
            "Open ibuffer with cursor pointed to most recent buffer name"
@@ -139,20 +152,4 @@
 ;;   (interactive)
 ;;   (term-send-raw-string "\e"))
 
-;; Add syntax highlighting for drush make if necessary
-;; (define-generic-mode
-;;     'info-mode
-;;   '(";")  ;; comment
-;;   nil
-;;   '(("projects" . 'font-lock-builtin-face)
-;;     ("libraries" . 'font-lock-builtin-face)
-;;     ("core" . 'font-lock-builtin-face)
-;;     ("api" . 'font-lock-builtin-face)) ;; operators and builtins
-;;   '(".info\\'" ".make\\'")
-;;   nil
-;;   "A mode for Drush .make and .info files"
-;;   )
-
-;; (set-face-attribute 'mode-line nil :font "Cantarell-12")
-;; (set-face-attribute 'mode-line nil :font "DejaVu Serif Condensed:italic:medium-12")
-;; (set-face-attribute 'default nil :font "DejaVu Sans Mono-13")
+;; (global-set-key [f5] 'call-last-kbd-macro)
