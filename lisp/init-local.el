@@ -80,6 +80,9 @@
             (define-key image-mode-map "w"
               'image-transform-fit-to-width)))
 
+;;; Set man page to open in current buffer. For other buffer, set to 'friendly
+(setq Man-notify-method 'pushy)
+
 ;;; -----------------------------------
 ;;; Shells
 ;;; -----------------------------------

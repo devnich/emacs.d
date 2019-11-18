@@ -9,6 +9,8 @@
   (when (maybe-require-package 'flycheck-color-mode-line)
     (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)))
 
+;;; Disable this perpetual annoyance
+(setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
 
 (provide 'init-flycheck)
 ;;; init-flycheck.el ends here
