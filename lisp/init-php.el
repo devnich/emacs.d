@@ -9,5 +9,13 @@
     (after-load 'company
       (push 'company-ac-php-backend company-backends))))
 
+;; Add syntax highlighting for Drupal PHP files
+(add-to-list 'auto-mode-alist '("\\.module$" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.install$" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.theme$" . php-mode))
+;; (add-to-list 'auto-mode-alist '("\\.profile$" . php-mode)) interferes with .profile file
+
+
 (provide 'init-php)
 ;;; init-php.el ends here
