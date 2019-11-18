@@ -2,12 +2,12 @@
 (require-package 'fish-mode)
 
 ;;; Use Fish Shell in multi-term
-;; (setq multi-term-buffer-name "~fish")
-;; (setq multi-term-program "/usr/bin/fish")
+(setq multi-term-buffer-name "~fish")
+(setq multi-term-program "/usr/bin/fish")
 
 ;;; Use Bash in multi-term
-(setq multi-term-buffer-name "~bash")
-(setq multi-term-program "/bin/bash")
+;; (setq multi-term-buffer-name "~bash")
+;; (setq multi-term-program "/bin/bash")
 
 ;;; Create new terminal buffer
 (global-set-key (kbd "C-c T") 'multi-term)
