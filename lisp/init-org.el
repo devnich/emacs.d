@@ -101,7 +101,7 @@ typical word processor."
         (setq truncate-lines nil)
         (setq word-wrap t)
         (setq cursor-type 'bar)
-        (when (eq major-mode 'org)
+        (when (eq major-mode 'org-mode)
           (kill-local-variable 'buffer-face-mode-face))
         (buffer-face-mode 1)
         ;;(delete-selection-mode 1)

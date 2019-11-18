@@ -16,8 +16,8 @@
       (load-theme theme)))
   (custom-set-variables `(custom-enabled-themes (quote ,custom-enabled-themes))))
 
-(add-hook 'after-init-hook 'reapply-themes)
-
+;;; Disabled because forcing re-application nukes our custom font choices
+;; (add-hook 'after-init-hook 'reapply-themes)
 
 ;;------------------------------------------------------------------------------
 ;; Toggle between light and dark

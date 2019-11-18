@@ -24,13 +24,29 @@
 ;;; -----------------------------------
 ;;; User interface
 ;;; -----------------------------------
+
 ;;; Use our own theme, based on Python IDLE. The path to this theme is set in
 ;;; init-preload.el.
 (setq-default custom-enabled-themes '(sanityinc-tomorrow-idle))
 
 ;;; Use a nice font
 (setq font-use-system-font nil)
-(set-frame-font "DejaVu Sans Mono-10")
+;; (set-frame-font "DejaVu Sans Mono-10")
+(cond
+ ((string-equal system-type "gnu/linux")
+  (set-face-attribute 'default nil :font "DejaVu Sans Mono-10"))
+ ((string-equal system-type "windows-nt")
+  (set-face-attribute 'default nil :font "Consolas-10"))
+ ((string-equal system-type "darwin")
+  (set-face-attribute 'default nil :font "Monaco-10"))
+ )
+(set-face-attribute 'mode-line nil :weight 'bold)
+(set-face-attribute 'variable-pitch nil :font "Verdana-10")
+
+;;; Alternate versions
+;; (when (member "DejaVu Sans Mono" (font-family-list))
+;;   (set-face-attribute 'default nil :font "DejaVu Sans Mono-10"))
+;; (set-face-attribute 'mode-line nil :font "Gillius ADF Bold")
 
 ;;; Scroll single line
 (setq scroll-step 1)
