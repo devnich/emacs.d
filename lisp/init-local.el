@@ -54,8 +54,13 @@
 (defalias 'qrr 'query-replace-regexp)
 ;; (global-set-key [f5] 'call-last-kbd-macro)
 
-;;; Defer fontifying until user is inactive
-(setq jit-lock-stealth-time 10)
+;;; Defer fontifying when input is pending
+(setq jit-lock-defer-time 0)
+
+;;; Defer fontifying until user is inactive. This appears to be redundant with the previous setting.
+;; (setq jit-lock-stealth-time 10)
+;; (setq jit-lock-stealth-nice 2)
+;; (setq jit-lock-stealth-verbose t)
 
 ;;; Save desktop on exit
 (desktop-save-mode 1)
