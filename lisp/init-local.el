@@ -46,7 +46,7 @@
   (set-face-attribute 'default nil :font "Monaco-10"))
  )
 (set-face-attribute 'mode-line nil :weight 'bold)
-(set-face-attribute 'variable-pitch nil :font "Verdana-10")
+(set-face-attribute 'variable-pitch nil :font "Arial-10")
 
 ;;; Alternate versions
 ;; (when (member "DejaVu Sans Mono" (font-family-list))
