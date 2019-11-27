@@ -7,7 +7,8 @@
 
 ;; Don't prompt to confirm theme safety. This avoids problems with
 ;; first-time startup on Emacs > 26.3.
-(setq custom-safe-themes t)
+;; N.B.: Setting this to "true" prevents new themes from being inserted into custom.el
+;; (setq custom-safe-themes t)
 
 ;; If you don't customize it, this is the theme you get.
 (setq-default custom-enabled-themes '(sanityinc-tomorrow-night))
