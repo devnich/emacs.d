@@ -268,5 +268,9 @@
 
 (maybe-require-package 'cask-mode)
 
+;;; Require hl-defined for additional syntax highlighting
+(require 'hl-defined)
+(add-hook 'emacs-lisp-mode-hook 'hdefd-highlight-mode 'APPEND)
+
 (provide 'init-lisp)
 ;;; init-lisp.el ends here
