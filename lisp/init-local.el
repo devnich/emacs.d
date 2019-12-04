@@ -41,7 +41,7 @@
  ((string-equal system-type "gnu/linux")
   (set-face-attribute 'default nil :font "DejaVu Sans Mono-10"))
  ((string-equal system-type "windows-nt")
-  (set-face-attribute 'default nil :font "Consolas-10"))
+  (set-face-attribute 'default nil :font "Consolas-12"))
  ((string-equal system-type "darwin")
   (set-face-attribute 'default nil :font "Monaco-10"))
  )
@@ -101,6 +101,8 @@
 ;;; Invoke eshell on startup
 (setq eshell-buffer-name "~$")
 (add-hook 'emacs-startup-hook 'eshell)
+(when (string-equal system-type "windows-nt")
+  (cd (getenv "HOME")))
 
 ;;; Suppress yes/no prompt when quitting shells
 (add-hook 'comint-exec-hook
@@ -126,7 +128,8 @@
 ;; (sort (buffer-list) '(lambda (a b) (string< (buffer-name a) (buffer-name b))))
 
 ;;; Set which flags are passed to ls for dired display
-(setq dired-listing-switches "-al --block-size=1M --group-directories-first")
+(when (not (string-equal system-type "windows-nt"))
+  (setq dired-listing-switches "-al --block-size=1M --group-directories-first"))
 ;; (setq dired-listing-switches "-ag --block-size=1M --no-group --group-directories-first")
 
 ;;; Look for .org files to include in agenda

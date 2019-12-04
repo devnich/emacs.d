@@ -21,7 +21,10 @@
       (load-theme theme)))
   (custom-set-variables `(custom-enabled-themes (quote ,custom-enabled-themes))))
 
-;;; Disabled because forcing re-application nukes our custom font choices
+;;; Disabled because forcing re-application nukes our custom font choices.
+;;; HOWEVER: Temporarily re-enabling this fixes theme application problems after
+;;; upgrade, so may need to investigate re-enabling this and making it play nice
+;;; with font bolding.
 ;; (add-hook 'after-init-hook 'reapply-themes)
 
 ;;------------------------------------------------------------------------------
