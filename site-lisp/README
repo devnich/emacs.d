@@ -1,3 +1,11 @@
 This is a place for 3rd party code which isn't available in MELPA or
 other package repositories. This directory and its immediate subdirectories
 will be added to load-path at start-up time.
+
+How to install a non-ELPA package in /site-lisp/<module>
+
+1. Clone into a subdirectory of ~/.emacs.d/site-lisp/
+2. Manually generate the <module>-autoloads.el file by running "M-x update-directory-autoloads"
+3. Manually byte-compile <module>.el files
+4. Remove ELPA version (if it exists) by running "M-x package-list-packages" and deleting the package
+5. Update /lisp/init-<module>.el to remove "(require-package <module>)" statement, which automatically downloads the package from ELPA. Use "(require <module>)" instead.

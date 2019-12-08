@@ -49,6 +49,7 @@ site-lisp/package/
 /plantuml.jar
 /magithub
 site-lisp/**
+!site-lisp/README
 .DS_Store
 /tutorial/**
 .cache/
