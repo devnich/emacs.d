@@ -26,29 +26,26 @@
 ;;; Run rustfmt on .rs files on save
 (setq rust-format-on-save t)
 
+;;; Allow Magit to clone repositories without interruption
+(setq magit-clone-set-remote.pushDefault nil)
+
 ;;; -----------------------------------
 ;;; User interface
 ;;; -----------------------------------
 
-;;; Use our own theme, based on Python IDLE. The path to this theme is set in
-;;; init-preload.el.
-(setq-default custom-enabled-themes '(sanityinc-tomorrow-idle))
-
 ;;; Use a nice font
 (setq font-use-system-font nil)
-;; (set-frame-font "DejaVu Sans Mono-10")
-(cond
- ((string-equal system-type "gnu/linux")
-  (set-face-attribute 'default nil :font "DejaVu Sans Mono-10"))
- ((string-equal system-type "windows-nt")
-  (set-face-attribute 'default nil :font "Consolas-12"))
- ((string-equal system-type "darwin")
-  (set-face-attribute 'default nil :font "Monaco-10"))
- )
-(set-face-attribute 'mode-line nil :weight 'bold)
+;; (cond ((string-equal system-type "gnu/linux")
+(cond ((member "DejaVu Sans Mono" (font-family-list))
+       (set-face-attribute 'default nil :font "DejaVu Sans Mono-10"))
+      ((string-equal system-type "windows-nt")
+       (set-face-attribute 'default nil :font "Consolas-12"))
+      ((string-equal system-type "darwin")
+       (set-face-attribute 'default nil :font "Monaco-10")))
 (set-face-attribute 'variable-pitch nil :font "Arial-10")
 
 ;;; Alternate versions
+;; (set-frame-font "DejaVu Sans Mono-10")
 ;; (when (member "DejaVu Sans Mono" (font-family-list))
 ;;   (set-face-attribute 'default nil :font "DejaVu Sans Mono-10"))
 ;; (set-face-attribute 'mode-line nil :font "Gillius ADF Bold")
@@ -127,10 +124,14 @@
 ;;; Return buffer list in a constant order; use in ibuffer-vc.el to maintain sort order of VC groups.
 ;; (sort (buffer-list) '(lambda (a b) (string< (buffer-name a) (buffer-name b))))
 
-;;; Set which flags are passed to ls for dired display
-(when (not (string-equal system-type "windows-nt"))
-  (setq dired-listing-switches "-al --block-size=1M --group-directories-first"))
-;; (setq dired-listing-switches "-ag --block-size=1M --no-group --group-directories-first")
+;;; Set which flags are passed to ls for dired display. Emulate the ls command on Windows.
+(if (string-equal system-type "windows-nt")
+    (progn (setq ls-lisp-dirs-first t)
+           (setq ls-lisp-ignore-case t)
+           (setq ls-lisp-UCA-like-collation t)
+           (setq ls-lisp-use-string-collate nil))  ; mimics -v
+  ;; else:
+  (setq dired-listing-switches "-alv --block-size=1M --group-directories-first"))
 
 ;;; Look for .org files to include in agenda
 (setq org-agenda-files (quote ("~/Dropbox/Library")))
