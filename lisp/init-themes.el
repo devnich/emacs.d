@@ -2,8 +2,12 @@
 ;;; Commentary:
 ;;; Code:
 
-(require-package 'color-theme-sanityinc-solarized)
-(require-package 'color-theme-sanityinc-tomorrow)
+;;; Check to see if our custom theme is installed
+(unless (site-lisp-library-loadable-p 'color-theme-sanityinc-tomorrow)
+  (display-warning 'site-lisp "/site-lisp/color-theme-sanityinc-tomorrow does not exist!\n  Clone from git@github.com:devnich/color-theme-sanityinc-tomorrow.git\n  Follow installation instructions in /site-lisp/README"))
+
+;; (require-package 'color-theme-sanityinc-solarized)
+(require 'color-theme-sanityinc-tomorrow)
 
 ;; Don't prompt to confirm theme safety. This avoids problems with
 ;; first-time startup on Emacs > 26.3.
@@ -11,7 +15,7 @@
 ;; (setq custom-safe-themes t)
 
 ;; If you don't customize it, this is the theme you get.
-(setq-default custom-enabled-themes '(sanityinc-tomorrow-night))
+(setq-default custom-enabled-themes '(sanityinc-tomorrow-idle))
 
 ;; Ensure that themes will be applied even if they have not been customized
 (defun reapply-themes ()
@@ -21,11 +25,7 @@
       (load-theme theme)))
   (custom-set-variables `(custom-enabled-themes (quote ,custom-enabled-themes))))
 
-;;; Disabled because forcing re-application nukes our custom font choices.
-;;; HOWEVER: Temporarily re-enabling this fixes theme application problems after
-;;; upgrade, so may need to investigate re-enabling this and making it play nice
-;;; with font bolding.
-;; (add-hook 'after-init-hook 'reapply-themes)
+(add-hook 'after-init-hook 'reapply-themes)
 
 ;;------------------------------------------------------------------------------
 ;; Toggle between light and dark

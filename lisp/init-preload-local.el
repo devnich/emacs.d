@@ -1,10 +1,7 @@
 (require-package 'epl)
 (require 'epl)
 
-;; Make custom themes available
-(when
-    (file-directory-p "~/emacs-themes/color-theme-sanityinc-tomorrow")
-  (add-to-list 'load-path "~/emacs-themes/color-theme-sanityinc-tomorrow")
-  (add-to-list 'custom-theme-load-path "~/emacs-themes/color-theme-sanityinc-tomorrow"))
+;;; Make custom themes available
+(setq custom-theme-directory "~/.emacs.d/site-lisp/")
 
 (provide 'init-preload-local)
