@@ -2,12 +2,29 @@
 ;;; Useful keyboard shortcuts
 ;;; -----------------------------------
 ;;; f1: help
+;;; f2: 2-column commands
 ;;; f3: kmacro-start-macro-or-insert-counter
 ;;; f4: kmacro-end-or-call-macro
 ;;; f5: deadgrep
+;;; f6: compile (make -k)
+;;; f7: see most recent buffer in other window
+;;; ( : Dired Hide Details mode
+
 ;;; need alterate keybinding for paredit-splice-sexp. See this comment in init-paredit.el:
-;;;    Suppress certain paredit keybindings to avoid clashes, including
-;;;    my global binding of M-?
+;;;    "Suppress certain paredit keybindings to avoid clashes, including
+;;;    my global binding of M-?"
+
+;;; Add some keyboard shortcuts
+(defalias 'qrr 'query-replace-regexp)
+(define-key lisp-interaction-mode-map (kbd "C-c C-c") 'eval-print-last-sexp)
+(define-key emacs-lisp-mode-map (kbd "C-c C-c") 'eval-buffer)
+(define-key emacs-lisp-mode-map (kbd "C-c b") 'emacs-lisp-byte-compile-and-load)
+
+;;; Customize site-lisp to manage external git repos. Unfortunately, magit is
+;;; not available at startup (because of autoloads?), so the following doesn't
+;;; work:
+;; (magit-clone-internal repository directory args)
+;; (magit-clone-internal "git@github.com:devnich/hl-defined.git" (site-lisp-dir-for 'hl-defined) '(nil))
 
 ;;; -----------------------------------
 ;;; Mode additions
@@ -58,9 +75,6 @@
 
 ;;; Set default column width
 (setq-default fill-column 80)
-
-;;; Add some keyboard shortcuts
-(defalias 'qrr 'query-replace-regexp)
 
 ;;; Defer fontifying when input is pending
 (setq jit-lock-defer-time 0)
