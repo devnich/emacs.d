@@ -270,7 +270,7 @@
 
 ;;; Require hl-defined for additional syntax highlighting
 (unless (site-lisp-library-loadable-p 'hl-defined)
-  (display-warning 'site-lisp "/site-lisp/hl-defined does not exist!\n  Clone from git@github.com:devnich/hl-defined.git\n  Follow installation instructions in /site-lisp/README"))
+  (display-warning 'site-lisp "/site-lisp/hl-defined does not exist or conflicts with a (M)ELPA package.\n  Clone from git@github.com:devnich/hl-defined.git\n  Follow installation instructions in /site-lisp/README"))
 (require 'hl-defined)
 (add-hook 'emacs-lisp-mode-hook 'hdefd-highlight-mode 'APPEND)
 

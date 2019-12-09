@@ -4,7 +4,7 @@
 
 ;;; Check to see if our custom theme is installed
 (unless (site-lisp-library-loadable-p 'color-theme-sanityinc-tomorrow)
-  (display-warning 'site-lisp "/site-lisp/color-theme-sanityinc-tomorrow does not exist!\n  Clone from git@github.com:devnich/color-theme-sanityinc-tomorrow.git\n  Follow installation instructions in /site-lisp/README"))
+  (display-warning 'site-lisp "/site-lisp/color-theme-sanityinc-tomorrow does not exist or conflicts with a (M)ELPA package.\n  Clone from git@github.com:devnich/color-theme-sanityinc-tomorrow.git\n  Follow installation instructions in /site-lisp/README"))
 
 ;; (require-package 'color-theme-sanityinc-solarized)
 (require 'color-theme-sanityinc-tomorrow)

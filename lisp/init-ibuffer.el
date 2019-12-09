@@ -13,7 +13,7 @@
 
 ;; (require-package 'ibuffer-vc)
 (unless (site-lisp-library-loadable-p 'ibuffer-vc)
-  (display-warning 'site-lisp "/site-lisp/ibuffer-vc does not exist!\n  Clone from git@github.com:devnich/ibuffer-vc.git\n  Follow installation instructions in /site-lisp/README"))
+  (display-warning 'site-lisp "/site-lisp/ibuffer-vc does not exist or conflicts with a (M)ELPA package.\n  Clone from git@github.com:devnich/ibuffer-vc.git\n  Follow installation instructions in /site-lisp/README"))
 (require 'ibuffer-vc)
 
 (defun ibuffer-set-up-preferred-filters ()
