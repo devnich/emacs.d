@@ -6,6 +6,6 @@ How to install a non-ELPA package in /site-lisp/<module>
 
 1. Clone into a subdirectory of ~/.emacs.d/site-lisp/
 2. Manually generate the <module>-autoloads.el file by running "M-x update-directory-autoloads"
-3. Manually byte-compile <module>.el files
-4. Remove ELPA version (if it exists) by running "M-x package-list-packages" and deleting the package
-5. Update /lisp/init-<module>.el to remove "(require-package <module>)" statement, which automatically downloads the package from ELPA. Use "(require <module>)" instead.
+3. Manually byte-compile <module>.el files by running "C-u 0 M-x byte-recompile-directory"
+4. If a (M)ELPA version is installed, remove it by running "M-x package-list-packages" and deleting the package
+5. In necessary, update the corresponding /lisp/init-<module>.el to remove "(require-package <module>)" statement. This function automatically (re-)downloads the package from (M)ELPA. Use "(require <module>)" instead.
