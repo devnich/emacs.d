@@ -56,7 +56,7 @@
 (cond ((member "DejaVu Sans Mono" (font-family-list))
        (set-face-attribute 'default nil :font "DejaVu Sans Mono-10"))
       ((string-equal system-type "windows-nt")
-       (set-face-attribute 'default nil :font "Consolas-12"))
+       (set-face-attribute 'default nil :font "Consolas-13"))
       ((string-equal system-type "darwin")
        (set-face-attribute 'default nil :font "Monaco-10")))
 (set-face-attribute 'variable-pitch nil :font "Arial-10")
