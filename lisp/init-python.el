@@ -13,6 +13,8 @@
                 ("SConscript\\'" . python-mode))
               auto-mode-alist))
 
+(setq python-shell-interpreter "python3")
+
 (require-package 'pip-requirements)
 
 (when (maybe-require-package 'anaconda-mode)
@@ -28,8 +30,13 @@
   (when (maybe-require-package 'company-anaconda)
     (after-load 'company
       (after-load 'python
-        (push 'company-anaconda company-backends)))))
+        (add-to-list 'company-backends 'company-anaconda)))))
 
+(when (maybe-require-package 'toml-mode)
+  (add-to-list 'auto-mode-alist '("poetry\\.lock\\'" . toml-mode)))
+
+(when (maybe-require-package 'reformatter)
+  (reformatter-define black :program "black"))
 
 (provide 'init-python)
 ;;; init-python.el ends here

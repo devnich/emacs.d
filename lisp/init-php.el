@@ -7,7 +7,7 @@
 
   (when (maybe-require-package 'company-php)
     (after-load 'company
-      (push 'company-ac-php-backend company-backends))))
+      (add-to-list 'company-backends 'company-ac-php-backend))))
 
 ;; Add syntax highlighting for Drupal PHP files
 (add-to-list 'auto-mode-alist '("\\.module$" . php-mode))

@@ -24,6 +24,5 @@
   (global-set-key (kbd "M-?") 'rg-project)
   (global-set-key (kbd "<f5>") #'deadgrep))
 
-
 (provide 'init-grep)
 ;;; init-grep.el ends here
