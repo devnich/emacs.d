@@ -53,6 +53,7 @@
 
 
 (when *is-a-mac*
+  (setq magit-git-executable "/usr/bin/git")
   (after-load 'magit
     (add-hook 'magit-mode-hook (lambda () (local-unset-key [(meta h)])))))
 

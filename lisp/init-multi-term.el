@@ -3,7 +3,10 @@
 
 ;;; Use Fish Shell in multi-term
 (setq multi-term-buffer-name "~fish")
-(setq multi-term-program "/usr/bin/fish")
+(if *is-a-mac*
+    (setq multi-term-program "~/.nix-profile/bin/fish")
+  (setq multi-term-program "/usr/bin/fish")
+  )
 
 ;;; Use Bash in multi-term
 ;; (setq multi-term-buffer-name "~bash")

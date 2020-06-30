@@ -54,12 +54,13 @@
 (setq font-use-system-font nil)
 ;; (cond ((string-equal system-type "gnu/linux")
 (cond ((member "DejaVu Sans Mono" (font-family-list))
-       (set-face-attribute 'default nil :font "DejaVu Sans Mono-10"))
+       (set-face-attribute 'default nil :font "DejaVu Sans Mono-14"))
       ((string-equal system-type "windows-nt")
        (set-face-attribute 'default nil :font "Consolas-13"))
-      ((string-equal system-type "darwin")
-       (set-face-attribute 'default nil :font "Monaco-10")))
-(set-face-attribute 'variable-pitch nil :font "Arial-10")
+      ;; ((string-equal system-type "darwin")
+      ;;  (set-face-attribute 'default nil :font "Monaco-14"))
+      )
+(set-face-attribute 'variable-pitch nil :font "Arial-14")
 
 ;;; Alternate versions
 ;; (set-frame-font "DejaVu Sans Mono-10")
@@ -128,12 +129,12 @@
 ;;; -----------------------------------
 
 ;;; Move cursor to the most recently visited buffer in ibuffer
-(defadvice ibuffer (around ibuffer-point-to-most-recent) ()
-           "Open ibuffer with cursor pointed to most recent buffer name"
-           (let ((recent-buffer-name (buffer-name)))
-             ad-do-it
-             (ibuffer-jump-to-buffer recent-buffer-name)))
-(ad-activate 'ibuffer)
+;; (defadvice ibuffer (around ibuffer-point-to-most-recent) ()
+;;            "Open ibuffer with cursor pointed to most recent buffer name"
+;;            (let ((recent-buffer-name (buffer-name)))
+;;              ad-do-it
+;;              (ibuffer-jump-to-buffer recent-buffer-name)))
+;; (ad-activate 'ibuffer)
 
 ;;; Return buffer list in a constant order; use in ibuffer-vc.el to maintain sort order of VC groups.
 ;; (sort (buffer-list) '(lambda (a b) (string< (buffer-name a) (buffer-name b))))
