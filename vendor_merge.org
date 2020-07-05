@@ -5,6 +5,26 @@
 *** master: Used as vendor branch. This is our copy of the vendor's upstream repository.
 *** gilgamesh: Personal branch
 ** Upstream: https://github.com/purcell/<repository>
+** Complete ~/.emacs.d/.git/config
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+	precomposeunicode = true
+[remote "origin"]
+	url = git@github.com:devnich/emacs.d.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+[branch "gilgamesh"]
+	remote = origin
+	merge = refs/heads/gilgamesh
+[remote "upstream"]
+	url = git@github.com:purcell/emacs.d.git
+	fetch = +refs/heads/*:refs/remotes/upstream/*
 
 * Merging changes from vendor upstream
 ** Check out vendor branch

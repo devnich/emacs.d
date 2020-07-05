@@ -89,8 +89,13 @@
 (desktop-save-mode 1)
 ;; (setq desktop-save t)
 
-;;; Use system trash instead of immediate delete
+;;; Use system trash instead of immediate delete.
+;;; On MacOS this requires additional configuration to support automatic undo. See:
+;;;   https://www.emacswiki.org/emacs/SystemTrash
+;;;   https://github.com/ali-rantakari/trash
 (setq delete-by-moving-to-trash t)
+(when *is-a-mac*
+  (setq trash-directory "~/.Trash"))
 
 ;;; Suppress entering debug on error
 (setq debug-on-error nil)
@@ -106,6 +111,17 @@
 ;;; Set man page to open in current buffer. For other buffer, set to 'friendly
 (setq Man-notify-method 'pushy)
 
+;;; Set theme based on MacOS Appearance
+;; (when *is-a-mac*
+;;   (do-applescript
+;;    ;; Inherit system appearance
+;;    "tell application \"System Events\"
+;;         tell appearance preferences
+;;                 set dark mode to not dark mode
+;;         end tell
+;;     end tell")
+;;   ;; Set Emacs theme?
+;;   )
 ;;; -----------------------------------
 ;;; Shells
 ;;; -----------------------------------
@@ -129,12 +145,12 @@
 ;;; -----------------------------------
 
 ;;; Move cursor to the most recently visited buffer in ibuffer
-;; (defadvice ibuffer (around ibuffer-point-to-most-recent) ()
-;;            "Open ibuffer with cursor pointed to most recent buffer name"
-;;            (let ((recent-buffer-name (buffer-name)))
-;;              ad-do-it
-;;              (ibuffer-jump-to-buffer recent-buffer-name)))
-;; (ad-activate 'ibuffer)
+(defadvice ibuffer (around ibuffer-point-to-most-recent) ()
+           "Open ibuffer with cursor pointed to most recent buffer name"
+           (let ((recent-buffer-name (buffer-name)))
+             ad-do-it
+             (ibuffer-jump-to-buffer recent-buffer-name)))
+(ad-activate 'ibuffer)
 
 ;;; Return buffer list in a constant order; use in ibuffer-vc.el to maintain sort order of VC groups.
 ;; (sort (buffer-list) '(lambda (a b) (string< (buffer-name a) (buffer-name b))))
