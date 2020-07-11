@@ -38,5 +38,22 @@
 (when (maybe-require-package 'reformatter)
   (reformatter-define black :program "black"))
 
+;;; Configure Conda virtual environments
+(when (maybe-require-package 'conda)
+  ;; if you want interactive shell support, include:
+  ;; (conda-env-initialize-interactive-shells)
+
+  ;; if you want eshell support, include:
+  ;; (conda-env-initialize-eshell)
+
+  ;; Auto-activate environment if we find an environment.yml file
+  (conda-env-autoactivate-mode t)
+
+  ;; Find Anaconda and environments on MacOS
+  (when *is-a-mac*
+    (setq conda-anaconda-home (expand-file-name "~/opt/anaconda3"))
+    (setq conda-env-home-directory (expand-file-name "~/opt/anaconda3")))
+  )
+
 (provide 'init-python)
 ;;; init-python.el ends here

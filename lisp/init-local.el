@@ -35,10 +35,10 @@
 (require 'init-multi-term)
 
 ;;; Use python 3 as the default python interpreter
-(setq python-shell-interpreter "python3")
+;; (setq python-shell-interpreter "python3")
 
 ;;; Use sqlite3 as default sqlite
-(setq sql-sqlite-program "/usr/bin/sqlite3")
+;; (setq sql-sqlite-program "/usr/bin/sqlite3")
 
 ;;; Run rustfmt on .rs files on save
 (setq rust-format-on-save t)
