@@ -50,23 +50,21 @@
 ;;; User interface
 ;;; -----------------------------------
 
-;;; Use a nice font
+;;; Use a nice monospace font
+;;; NB: mode-line font height is set in the theme
 (setq font-use-system-font nil)
-;; (cond ((string-equal system-type "gnu/linux")
 (cond ((member "DejaVu Sans Mono" (font-family-list))
        (set-face-attribute 'default nil :font "DejaVu Sans Mono-14"))
       ((string-equal system-type "windows-nt")
-       (set-face-attribute 'default nil :font "Consolas-13"))
-      ;; ((string-equal system-type "darwin")
-      ;;  (set-face-attribute 'default nil :font "Monaco-14"))
-      )
-(set-face-attribute 'variable-pitch nil :font "Arial-14")
+       (set-face-attribute 'default nil :font "Consolas-14"))
+      ((string-equal system-type "darwin")
+       (set-face-attribute 'default nil :font "Menlo-14")))
 
-;;; Alternate versions
-;; (set-frame-font "DejaVu Sans Mono-10")
-;; (when (member "DejaVu Sans Mono" (font-family-list))
-;;   (set-face-attribute 'default nil :font "DejaVu Sans Mono-10"))
-;; (set-face-attribute 'mode-line nil :font "Gillius ADF Bold")
+;;; Use a nice variable-pitch font
+(if *is-a-mac*
+    ;; Hoefler Text for serif, Helvetica Neue for sans-serif
+    (set-face-attribute 'variable-pitch nil :font "Hoefler Text-16")
+  (set-face-attribute 'variable-pitch nil :font "Arial-14"))
 
 ;;; Scroll single line
 (setq scroll-step 1)
