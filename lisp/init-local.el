@@ -66,6 +66,14 @@
     (set-face-attribute 'variable-pitch nil :font "Hoefler Text-16")
   (set-face-attribute 'variable-pitch nil :font "Arial-14"))
 
+;;; Toggle line spacing at will
+(defun toggle-line-spacing ()
+  (interactive)
+  (if line-spacing
+      (setq line-spacing nil)
+    (setq line-spacing 0.2))
+  (redraw-frame (selected-frame)))
+
 ;;; Scroll single line
 (setq scroll-step 1)
 

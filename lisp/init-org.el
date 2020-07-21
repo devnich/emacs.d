@@ -63,7 +63,21 @@
 
 
 
+;;; Mix monospace and variable-pitch fonts
+(maybe-require-package 'mixed-pitch)
+
+;;; Inherit font sizes from 'default and 'variable-pitch
+(setq mixed-pitch-set-height t)
+
+;;; Set default layout for org mode files
+(add-hook 'org-mode-hook 'visual-line-mode)
+(add-hook 'org-mode-hook 'mixed-pitch-mode)
+(add-hook 'org-mode-hook (lambda () (setq line-spacing 0.2)))
+(add-hook 'org-mode-hook 'flyspell-mode)
+;; (set-face-attribute 'org-indent nil :font "DejaVu Sans Mono-14")
+
 (maybe-require-package 'writeroom-mode)
+;; (setq writeroom-extra-line-spacing 0.2)
 
 (define-minor-mode prose-mode
   "Set up a buffer for prose editing.
