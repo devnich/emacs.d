@@ -135,8 +135,7 @@
 ;;; Invoke eshell on startup
 (setq eshell-buffer-name "~$")
 (add-hook 'emacs-startup-hook 'eshell)
-(when (string-equal system-type "windows-nt")
-  (cd (getenv "HOME")))
+(cd (getenv "HOME"))
 
 ;;; Suppress yes/no prompt when quitting shells
 (add-hook 'comint-exec-hook
