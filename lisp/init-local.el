@@ -106,6 +106,9 @@
 ;;; Suppress entering debug on error
 (setq debug-on-error nil)
 
+;;; Open .svg files as images instead of XML
+(add-to-list 'auto-mode-alist '("\\.svg\\'" . image-mode))
+
 ;;; Add height and width shortcuts to image-mode
 (add-hook 'image-mode-hook
           (lambda ()
