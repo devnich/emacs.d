@@ -47,7 +47,9 @@
   ;; (conda-env-initialize-eshell)
 
   ;; Auto-activate environment if we find an environment.yml file
-  (conda-env-autoactivate-mode t)
+  ;; NB: This may interfere with company-anaconda autocomplete in .py files. It
+  ;; also produces annoying message spam every time a file opens.
+  ;; (conda-env-autoactivate-mode t)
 
   ;; Find Anaconda and environments on MacOS
   (when *is-a-mac*
