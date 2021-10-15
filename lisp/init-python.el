@@ -7,13 +7,29 @@
 ;; work seamlessly with Emacs:
 ;; https://gist.github.com/purcell/81f76c50a42eee710dcfc9a14bfc7240
 
+;;; Automatic support for Conda virtual environments
+(when (maybe-require-package 'conda)
+  ;; if you want interactive shell support, include:
+  ;; (conda-env-initialize-interactive-shells)
+
+  ;; if you want eshell support, include:
+  ;; (conda-env-initialize-eshell)
+
+  ;; Auto-activate environment if we find an environment.yml file. This may
+  ;; interfere with company-anaconda autocomplete in .py files. It also produces
+  ;; annoying message spam every time a file opens:
+  ;; (conda-env-autoactivate-mode t)
+
+  ;; Find Anaconda and environments on MacOS
+  (when *is-a-mac*
+    (setq conda-anaconda-home (expand-file-name "~/opt/anaconda3"))
+    (setq conda-env-home-directory (expand-file-name "~/opt/anaconda3")))
+  )
 
 (setq auto-mode-alist
       (append '(("SConstruct\\'" . python-mode)
                 ("SConscript\\'" . python-mode))
               auto-mode-alist))
-
-(setq python-shell-interpreter "python3")
 
 (require-package 'pip-requirements)
 
@@ -37,25 +53,6 @@
 
 (when (maybe-require-package 'reformatter)
   (reformatter-define black :program "black"))
-
-;;; Configure Conda virtual environments
-(when (maybe-require-package 'conda)
-  ;; if you want interactive shell support, include:
-  ;; (conda-env-initialize-interactive-shells)
-
-  ;; if you want eshell support, include:
-  ;; (conda-env-initialize-eshell)
-
-  ;; Auto-activate environment if we find an environment.yml file
-  ;; NB: This may interfere with company-anaconda autocomplete in .py files. It
-  ;; also produces annoying message spam every time a file opens.
-  ;; (conda-env-autoactivate-mode t)
-
-  ;; Find Anaconda and environments on MacOS
-  (when *is-a-mac*
-    (setq conda-anaconda-home (expand-file-name "~/opt/anaconda3"))
-    (setq conda-env-home-directory (expand-file-name "~/opt/anaconda3")))
-  )
 
 (provide 'init-python)
 ;;; init-python.el ends here

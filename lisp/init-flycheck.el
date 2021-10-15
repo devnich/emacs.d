@@ -10,7 +10,7 @@
     (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)))
 
 ;;; Disable this perpetual annoyance
-(setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
+(setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc python-flake8))
 
 (provide 'init-flycheck)
 ;;; init-flycheck.el ends here

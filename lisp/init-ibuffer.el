@@ -16,6 +16,40 @@
   (display-warning 'site-lisp "/site-lisp/ibuffer-vc does not exist or conflicts with a (M)ELPA package.\n  Clone from git@github.com:devnich/ibuffer-vc.git\n  Follow installation instructions in /site-lisp/README"))
 (require 'ibuffer-vc)
 
+;; (define-ibuffer-sorter filename/path)
+;;; https://emacs.stackexchange.com/questions/10621/how-to-get-ibuffer-to-use-directory-tree-as-filter-groups
+
+;; Sorting by filename/process gives stable sorting of files but not
+;; directories. To get stable sorting of directories, we need to define a new
+;; ibuffer sorter that followers filename/process as the default sort, and
+;; falls through to alphabetic for everything else. Once this is done, we
+;; probably no longer need to maintain a custome version of ibuffer-vc, since
+;; it's sorting stability was ephemeral. Here are the relevant sorters from
+;; ibuf-ext.el:
+;; ;;;###autoload (autoload 'ibuffer-do-sort-by-filename/process "ibuf-ext")
+;; (define-ibuffer-sorter filename/process
+;;   "Sort the buffers by their file name/process name."
+;;   (:description "file name")
+;;   (string-lessp
+;;    ;; FIXME: For now just compare the file name and the process name
+;;    ;; (if it exists).  Is there a better way to do this?
+;;    (or (buffer-file-name (car a))
+;;        (let ((pr-a (get-buffer-process (car a))))
+;;          (and (processp pr-a) (process-name pr-a))))
+;;    (or (buffer-file-name (car b))
+;;        (let ((pr-b (get-buffer-process (car b))))
+;;          (and (processp pr-b) (process-name pr-b))))))
+
+;; ;;;###autoload (autoload 'ibuffer-do-sort-by-alphabetic "ibuf-ext")
+;; (define-ibuffer-sorter alphabetic
+;;   "Sort the buffers by their names.
+;; Ordering is lexicographic."
+;;   (:description "buffer name")
+;;   (string-lessp
+;;    (buffer-name (car a))
+;;    (buffer-name (car b))))
+
+
 (defun ibuffer-set-up-preferred-filters ()
   (ibuffer-vc-set-filter-groups-by-vc-root)
   (unless (eq ibuffer-sorting-mode 'filename/process)

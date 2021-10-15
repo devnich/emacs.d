@@ -131,6 +131,7 @@
 ;;     end tell")
 ;;   ;; Set Emacs theme?
 ;;   )
+
 ;;; -----------------------------------
 ;;; Shells
 ;;; -----------------------------------
@@ -173,7 +174,7 @@
   (setq dired-listing-switches "-alv --block-size=1M --group-directories-first"))
 
 ;;; Look for .org files to include in agenda
-(setq org-agenda-files (quote ("~/Dropbox/Library")))
+;; (setq org-agenda-files (quote ("~/Dropbox/Library")))
 
 (provide 'init-local)
 
