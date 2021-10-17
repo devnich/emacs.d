@@ -50,8 +50,8 @@
       org-html-validation-link nil
       org-export-kill-product-buffer-when-displayed t
       org-tags-column 80
-      org-src-fontify-natively t)
-
+      org-src-fontify-natively t
+      org-edit-src-content-indentation 0)
 
 ;; Lots of stuff from http://doc.norang.ca/org-mode.html
 
