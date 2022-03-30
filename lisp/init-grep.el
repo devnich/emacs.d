@@ -23,7 +23,8 @@
            (maybe-require-package 'deadgrep))
   (global-set-key (kbd "M-?") 'rg-project)
   (global-set-key (kbd "<f5>") #'deadgrep)
-  (exec-path-from-shell-copy-env "RIPGREP_CONFIG_PATH"))
+  ;; (exec-path-from-shell-copy-env "RIPGREP_CONFIG_PATH")
+  )
 
 (provide 'init-grep)
 ;;; init-grep.el ends here
