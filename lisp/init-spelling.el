@@ -2,6 +2,11 @@
 ;;; Commentary:
 ;;; Code:
 
+;;; Hunspell project:  https://github.com/hunspell/hunspell
+;;; Windows binary available from: https://sourceforge.net/projects/ezwinports/files/
+;;;  copy into the C:/Program Files/hunspell directory
+(if *is-windows* (setq ispell-program-name "C:/Program Files/hunspell/bin/hunspell"))
+
 (require 'ispell)
 
 (when (executable-find ispell-program-name)
