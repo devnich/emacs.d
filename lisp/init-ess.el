@@ -5,6 +5,9 @@
 (when (maybe-require-package 'ess)
   (add-to-list 'auto-mode-alist '("\\.R\\'" . ess-r-mode)))
 
+;;; ESS uses flymake for syntax checking by default; this produces errors
+(setq ess-use-flymake nil)
+
 (maybe-require-package 'polymode)
 (when (maybe-require-package 'poly-R)
   ;; associate the new polymode to Rmd files:
