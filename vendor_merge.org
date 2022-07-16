@@ -68,6 +68,14 @@ M-x flush-lines
 M-x flush-lines
 [regex]
 
+* rsync usage
+** Pre-upgrade backups
+cd <new directory parent>
+rsync -aHAXS --progress <old directory> <new directory>
+** Post-upgrade restore (Linux, no disk labels)
+cd
+rsync -aHAXS --progress /media/<user>/<disk serial id>/home/<user>/<old directory> /home/<user>/<new directory>
+
 * COMMENT Footer
 ;; Local Variables:
 ;; eval: (visual-line-mode)
