@@ -71,7 +71,10 @@ M-x flush-lines
 * rsync usage
 ** Pre-upgrade backups
 cd <new directory parent>
+# File-by-file progress
 rsync -aHAXS --progress <old directory> <new directory>
+# Total transfer progress
+rsync -aHAXS --info=progress2 <old directory> <new directory>
 ** Post-upgrade restore (Linux, no disk labels)
 cd
 rsync -aHAXS --progress /media/<user>/<disk serial id>/home/<user>/<old directory> /home/<user>/<new directory>
