@@ -23,8 +23,12 @@
            (maybe-require-package 'deadgrep))
   (global-set-key (kbd "M-?") 'rg-project)
   (global-set-key (kbd "<f5>") #'deadgrep)
-  ;; (exec-path-from-shell-copy-env "RIPGREP_CONFIG_PATH")
-  )
+
+  ;; Execute ripgrep search in the current directory instead of the project
+  ;; directory
+  (defun return-current-dir ()
+    default-directory)
+  (setq deadgrep-project-root-function #'return-current-dir))
 
 (provide 'init-grep)
 ;;; init-grep.el ends here

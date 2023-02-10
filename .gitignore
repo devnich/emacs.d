@@ -57,3 +57,4 @@ site-lisp/package/
 /transient
 /*.cache
 server/
+eln-cache/*

@@ -120,5 +120,13 @@ This command currently blocks the UI, sorry."
 (after-load 'page-break-lines
   (add-to-list 'page-break-lines-modes 'sql-mode))
 
+
+(defun global-inferior-sqlite ()
+  "Use one SQLite inferior process for all buffers."
+  (when (eq sql-product 'sqlite)
+    (sql-set-sqli-buffer)))
+
+(add-hook 'sql-interactive-mode-hook 'global-inferior-sqlite)
+
 (provide 'init-sql)
 ;;; init-sql.el ends here

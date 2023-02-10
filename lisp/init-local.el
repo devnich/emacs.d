@@ -55,9 +55,9 @@
 (setq font-use-system-font nil)
 (cond ((member "DejaVu Sans Mono" (font-family-list))
        (set-face-attribute 'default nil :font "DejaVu Sans Mono-14"))
-      ((string-equal system-type "windows-nt")
+      (*is-windows* ;; (string-equal system-type "windows-nt")
        (set-face-attribute 'default nil :font "Consolas-14"))
-      ((string-equal system-type "darwin")
+      (*is-a-mac* ;; (string-equal system-type "darwin")
        (set-face-attribute 'default nil :font "Menlo-14")))
 
 ;;; Use a nice variable-pitch font
@@ -83,13 +83,14 @@
 ;;; Set default column width
 (setq-default fill-column 80)
 
-;;; Defer fontifying when input is pending
-(setq jit-lock-defer-time 0)
+;;; Defer fontifying when input is pending. Setting this to 0 might cause severe input lag?
+(setq jit-lock-defer-time 0.5)  ;; nil by default
 
-;;; Defer fontifying until user is inactive. This appears to be redundant with the previous setting.
-;; (setq jit-lock-stealth-time 10)
-;; (setq jit-lock-stealth-nice 2)
-;; (setq jit-lock-stealth-verbose t)
+;; (setq fast-but-imprecise-scrolling t)
+
+;;; Defer fontifying until user is inactive
+(setq jit-lock-stealth-time 2)
+;; (setq jit-lock-stealth-nice 0.5)  ;; set automatically
 
 ;;; Save desktop on exit
 (desktop-save-mode 1)
@@ -165,13 +166,18 @@
 ;; (sort (buffer-list) '(lambda (a b) (string< (buffer-name a) (buffer-name b))))
 
 ;;; Set which flags are passed to ls for dired display. Emulate the ls command on Windows.
-(if (string-equal system-type "windows-nt")
+(if *is-windows* ;; (string-equal system-type "windows-nt")
     (progn (setq ls-lisp-dirs-first t)
            (setq ls-lisp-ignore-case t)
            (setq ls-lisp-UCA-like-collation t)
            (setq ls-lisp-use-string-collate nil))  ; mimics -v
-  ;; else:
   (setq dired-listing-switches "-alv --block-size=1M --group-directories-first"))
+
+;; Use BSD-safe switches in TRAMP; root does not have access to Coreutils version of ls
+(if *is-a-mac* (add-hook 'dired-mode-hook
+                         (lambda ()
+                           (when (file-remote-p dired-directory)
+                             (setq-local dired-actual-switches "-alhv")))))
 
 ;;; Look for .org files to include in agenda
 ;; (setq org-agenda-files (quote ("~/Dropbox/Library")))

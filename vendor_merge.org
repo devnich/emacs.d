@@ -1,4 +1,4 @@
-#+STARTUP: showeverything indent
+#+STARTUP: showall indent
 
 * How to manage vendor branches
 ** Origin: https://github.com/devnich/<repository>
@@ -38,6 +38,9 @@ git checkout gilgamesh
 git merge master
 git push
 
+* Comparing branches
+d r START..END <return>
+
 * Preserving local branch files during merge
 git merge --no-commit <merge-branch>
 git reset <file-name>
@@ -55,7 +58,6 @@ git commit -m "merged <merge-branch>"
 ** global-dired-hide-details-mode?
 ** clojure-cider sometimes breaks
 ** add ibuffer filters for [default] non-vc groups
-
 ** cursor lag tweaks
 
 * Common tasks

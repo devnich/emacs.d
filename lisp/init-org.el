@@ -41,6 +41,8 @@
 
 
 ;; Various preferences
+;; Note that org-edit-src-content-indentation has no effect if
+;; org-src-preserve-indentation is non-nil
 (setq org-log-done t
       org-edit-timestamp-down-means-later t
       org-hide-emphasis-markers t
@@ -51,7 +53,10 @@
       org-export-kill-product-buffer-when-displayed t
       org-tags-column 80
       org-src-fontify-natively t
-      org-edit-src-content-indentation 0)
+      org-edit-src-content-indentation 0
+      org-image-actual-width nil
+      org-src-window-setup 'current-window)
+;; org-src-preserve-indentation t)
 
 ;; Lots of stuff from http://doc.norang.ca/org-mode.html
 
