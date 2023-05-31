@@ -11,10 +11,10 @@
 ;; (after-load 'ibuffer
 ;;   (fullframe ibuffer ibuffer-quit))
 
-;; (require-package 'ibuffer-vc)
-(unless (site-lisp-library-loadable-p 'ibuffer-vc)
-  (display-warning 'site-lisp "/site-lisp/ibuffer-vc does not exist or conflicts with a (M)ELPA package.\n  Clone from git@github.com:devnich/ibuffer-vc.git\n  Follow installation instructions in /site-lisp/README"))
-(require 'ibuffer-vc)
+(require-package 'ibuffer-vc)
+;; (unless (site-lisp-library-loadable-p 'ibuffer-vc)
+;;   (display-warning 'site-lisp "/site-lisp/ibuffer-vc does not exist or conflicts with a (M)ELPA package.\n  Clone from git@github.com:devnich/ibuffer-vc.git\n  Follow installation instructions in /site-lisp/README"))
+;; (require 'ibuffer-vc)
 
 ;; (define-ibuffer-sorter filename/path)
 ;;; https://emacs.stackexchange.com/questions/10621/how-to-get-ibuffer-to-use-directory-tree-as-filter-groups

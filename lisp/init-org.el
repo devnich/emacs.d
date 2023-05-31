@@ -65,7 +65,9 @@
   (add-hook 'org-agenda-mode-hook
             (lambda () (add-hook 'window-configuration-change-hook 'org-agenda-align-tags nil t))))
 
-
+;; Perform case-insensitive sorting in org mode
+(add-hook 'org-mode-hook
+          (lambda () (setq-local sort-fold-case t)))
 
 
 ;;; Mix monospace and variable-pitch fonts
