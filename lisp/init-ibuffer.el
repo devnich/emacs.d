@@ -6,9 +6,10 @@
 
 ;;; Code:
 
-(require-package 'fullframe)
-(with-eval-after-load 'ibuffer
- (fullframe ibuffer ibuffer-quit))
+;;; This closes all other frames (DD)
+;; (require-package 'fullframe)
+;; (with-eval-after-load 'ibuffer
+;;  (fullframe ibuffer ibuffer-quit))
 
 (require-package 'ibuffer-vc)
 
@@ -32,7 +33,7 @@
 ;; Modify the default ibuffer-formats (toggle with `)
 (setq ibuffer-formats
       '((mark modified read-only vc-status-mini " "
-              (name 22 22 :left :elide)
+              (name 30 30 :left :elide) ;; wider names (DD)
               " "
               (size-h 9 -1 :right)
               " "
@@ -40,7 +41,7 @@
               " "
               vc-relative-file)
         (mark modified read-only vc-status-mini " "
-              (name 22 22 :left :elide)
+              (name 30 30 :left :elide) ;; wider names (DD)
               " "
               (size-h 9 -1 :right)
               " "

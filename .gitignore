@@ -55,3 +55,12 @@ site-lisp/package/
 /smex-items
 /eln-cache/
 /projects
+
+# Derek's additions
+.DS_Store
+/*.cache
+/site-lisp/**
+!site-lisp/README
+/site-lisp-archive/**
+/tutorial/**
+server/

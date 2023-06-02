@@ -120,5 +120,20 @@ This command currently blocks the UI, sorry."
 (with-eval-after-load 'page-break-lines
   (add-to-list 'page-break-lines-modes 'sql-mode))
 
+
+;;; Derek's SQLite customizations
+
+;;; Use sqlite3 as default sqlite
+;; (setq sql-sqlite-program "/usr/bin/sqlite3")
+
+;;; Use a single interactive prompt for all SQLite queries
+(defun global-inferior-sqlite ()
+  "Use one SQLite inferior process for all buffers."
+  (when (eq sql-product 'sqlite)
+    (sql-set-sqli-buffer)))
+
+(add-hook 'sql-interactive-mode-hook 'global-inferior-sqlite)
+
+
 (provide 'init-sql)
 ;;; init-sql.el ends here

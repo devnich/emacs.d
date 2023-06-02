@@ -59,6 +59,27 @@
   (add-hook 'org-agenda-mode-hook
             (lambda () (add-hook 'window-configuration-change-hook 'org-agenda-align-tags nil t))))
 
+
+;;; Derek's Org settings
+
+;; `org-edit-src-content-indentation' has no effect if
+;; `org-src-preserve-indentation' is set
+(setq org-edit-src-content-indentation 0
+      org-image-actual-width nil
+      org-src-fontify-natively t
+      org-src-window-setup 'current-window)
+
+;;; Mix monospace and variable-pitch fonts
+(maybe-require-package 'mixed-pitch)
+
+;;; Inherit font sizes from 'default and 'variable-pitch
+(setq mixed-pitch-set-height t)
+
+;;; Set default layout for org mode files
+(add-hook 'org-mode-hook 'visual-line-mode)
+(add-hook 'org-mode-hook 'mixed-pitch-mode)
+(add-hook 'org-mode-hook (lambda () (setq line-spacing 0.2)))
+(add-hook 'org-mode-hook 'flyspell-mode)
 
 
 

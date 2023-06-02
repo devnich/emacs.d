@@ -50,9 +50,13 @@
 
 
 (when *is-a-mac*
+  ;; Specify git executable if necessary (DD)
+  ;; (setq magit-git-executable "/usr/bin/git")
   (with-eval-after-load 'magit
     (add-hook 'magit-mode-hook (lambda () (local-unset-key [(meta h)])))))
 
+;;; Allow Magit to clone repositories without interruption (DD)
+;; (setq magit-clone-set-remote.pushDefault nil)
 
 
 ;; Convenient binding for vc-git-grep

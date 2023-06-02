@@ -1,0 +1,90 @@
+#+STARTUP: showall indent
+
+* How to manage vendor branches
+** Origin: https://github.com/devnich/<repository>
+*** master: Used as vendor branch. This is our copy of the vendor's upstream repository.
+*** gilgamesh: Personal branch
+** Upstream: https://github.com/purcell/<repository>
+** Complete ~/.emacs.d/.git/config
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+	precomposeunicode = true
+[remote "origin"]
+	url = git@github.com:devnich/emacs.d.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+[branch "gilgamesh"]
+	remote = origin
+	merge = refs/heads/gilgamesh
+[remote "upstream"]
+	url = git@github.com:purcell/emacs.d.git
+	fetch = +refs/heads/*:refs/remotes/upstream/*
+
+* Merging changes from vendor upstream
+** Check out vendor branch
+git checkout master
+** Pull changes from vendor's upstream
+git pull uptream master
+** Push changes to our own remote
+git push origin master
+** Merge changes into personal branch
+git checkout gilgamesh
+git merge master
+git push
+
+* Comparing branches
+d r START..END <return>
+
+* Preserving local branch files during merge
+git merge --no-commit <merge-branch>
+git reset <file-name>
+git commit -m "merged <merge-branch>"
+
+* Adding file from different branch
+git restore -s <source-branch> -- <file-name>
+
+* Additional files
+vendor_merge.org
+
+** /lisp
+init-ess.el
+init-local.el
+init-multi-term.el
+init-pdf.el
+init-preload-local.el
+init-web.el
+
+** /site-lisp
+install_instructions.org
+
+** /site-lisp/color-theme-sanityinc-tomorrow
+sanityinc-tomorrow-idle-theme.el
+
+
+* Common Tasks
+** Emacs
+1. Mark whole buffer
+   C-x h
+2. Remove empty line
+   M-x flush-lines
+   ^$
+3. Remove matching line
+   M-x flush-lines
+   [regex]
+
+** rsync
+1. Pre-upgrade backups
+   cd <new directory parent>
+   # File-by-file progress
+   rsync -aHAXS --progress <old directory> <new directory>
+   # Total transfer progress
+   rsync -aHAXS --info=progress2 <old directory> <new directory>
+2. Post-upgrade restore (Linux, no disk labels)
+   cd
+   rsync -aHAXS --progress /media/<user>/<disk serial id>/home/<user>/<old directory> /home/<user>/<new directory>

@@ -7,7 +7,7 @@
 ;;; Code:
 
 ;; Produce backtraces when errors occur: can be helpful to diagnose startup issues
-;;(setq debug-on-error t)
+(setq debug-on-error t)
 
 (let ((minver "26.1"))
   (when (version< emacs-version minver)
@@ -20,6 +20,7 @@
 
 (defconst *spell-check-support-enabled* nil) ;; Enable with t if you prefer
 (defconst *is-a-mac* (eq system-type 'darwin))
+(defconst *is-windows* (eq system-type 'windows-nt))
 
 
 ;; Adjust garbage collection thresholds during startup, and thereafter
@@ -110,10 +111,14 @@
 (require 'init-yaml)
 (require 'init-docker)
 (require 'init-terraform)
+
+;;; Nix package doesn't work on Windows (DD)
+(unless *is-windows*
+  (require 'init-nix))
 (require 'init-nix)
 (maybe-require-package 'nginx-mode)
 
-(require 'init-paredit)
+(require 'init-paredit) ;; breaks ibuffers (DD)
 (require 'init-lisp)
 (require 'init-slime)
 (require 'init-clojure)
@@ -131,6 +136,13 @@
 ;;(require 'init-twitter)
 ;; (require 'init-mu)
 (require 'init-ledger)
+
+;;; Derek's packages
+(require 'init-ess)
+(require 'init-multi-term)
+(require 'init-pdf)
+(require 'init-web)
+
 ;; Extra packages which don't require any configuration
 
 (require-package 'sudo-edit)

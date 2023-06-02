@@ -2,15 +2,23 @@
 ;;; Commentary:
 ;;; Code:
 
-(require-package 'color-theme-sanityinc-solarized)
-(require-package 'color-theme-sanityinc-tomorrow)
+
+;;; Use Derek's local theme instead of MELPA version
+;; (require-package 'color-theme-sanityinc-solarized)
+;; (require-package 'color-theme-sanityinc-tomorrow)
+(require 'color-theme-sanityinc-tomorrow)
+
+;;; Check to see if our custom theme is installed
+(unless (site-lisp-library-loadable-p 'color-theme-sanityinc-tomorrow)
+  (display-warning 'site-lisp "/site-lisp/color-theme-sanityinc-tomorrow does not exist or conflicts with a (M)ELPA package.\n  Clone from git@github.com:devnich/color-theme-sanityinc-tomorrow.git\n  Follow installation instructions in /site-lisp/README"))
 
 ;; Don't prompt to confirm theme safety. This avoids problems with
 ;; first-time startup on Emacs > 26.3.
 (setq custom-safe-themes t)
 
 ;; If you don't customize it, this is the theme you get.
-(setq-default custom-enabled-themes '(sanityinc-tomorrow-bright))
+(setq-default custom-enabled-themes '(sanityinc-tomorrow-idle))
+
 
 ;; Ensure that themes will be applied even if they have not been customized
 (defun reapply-themes ()
@@ -29,7 +37,7 @@
 (defun light ()
   "Activate a light color theme."
   (interactive)
-  (setq custom-enabled-themes '(sanityinc-tomorrow-day))
+  (setq custom-enabled-themes '(sanityinc-tomorrow-idle))
   (reapply-themes))
 
 (defun dark ()

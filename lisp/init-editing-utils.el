@@ -94,7 +94,9 @@
 (when (boundp 'display-fill-column-indicator)
   (setq-default indicate-buffer-boundaries 'left)
   (setq-default display-fill-column-indicator-character ?\u254e)
-  (add-hook 'prog-mode-hook 'display-fill-column-indicator-mode))
+  ;; Disable showing fill column boundary (DD)
+  ;; (add-hook 'prog-mode-hook 'display-fill-column-indicator-mode)
+  )
 
 
 
