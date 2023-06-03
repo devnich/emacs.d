@@ -22,12 +22,8 @@
 
 ;; Allow some keys to bypass Emacs and go to the underlying term process
 (add-hook 'term-mode-hook
-          (lambda () (define-key term-raw-map (kbd "ESC") 'term-send-esc)))
+          (lambda () (define-key term-raw-map (kbd "C-c ESC") 'term-send-esc)))
 (add-hook 'term-mode-hook
           (lambda () (define-key term-raw-map (kbd "C-y") 'term-paste)))
-(add-hook 'term-mode-hook
-          (lambda () (define-key term-raw-map (kbd "C-c C-j") 'term-line-mode)))
-(add-hook 'term-mode-hook
-          (lambda () (define-key term-raw-map (kbd "C-c C-k") 'term-char-mode)))
 
 (provide 'init-multi-term)

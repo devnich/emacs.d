@@ -139,6 +139,7 @@
 
 ;;; Derek's packages
 (require 'init-ess)
+(require 'init-julia)
 (require 'init-multi-term)
 (require 'init-pdf)
 (require 'init-web)
