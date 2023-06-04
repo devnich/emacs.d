@@ -1,9 +1,9 @@
 #+STARTUP: showall indent
 
-* How to manage vendor branches
+* Repository structure for vendor branches
 ** Origin: https://github.com/devnich/<repository>
 *** master: Used as vendor branch. This is our copy of the vendor's upstream repository.
-*** gilgamesh: Personal branch
+*** gilgamesh (e.g.): Personal branch
 ** Upstream: https://github.com/purcell/<repository>
 ** Complete ~/.emacs.d/.git/config
 [core]
@@ -39,7 +39,21 @@ git merge master
 git push
 
 * Comparing branches
+** Magit
 d r START..END <return>
+
+** Terminal
+git diff -p old-branch new-branch
+git diff -p master patch-20230531 > ~/Desktop/patch.patch
+git diff -p patch-20230531 prod > ~/Desktop/patch.patch
+
+* Vendor update strategy
+In the simplest case, it should be possible to merge new changes from master into prod and have it "just work"
+1. Check out new "patch-<date>" branch from prod
+2. Attempt to merge updated master into "patch-<date>"
+3. Generate diff of "patch-<date>" branch and prod to check whether the merge has overwritten local changes
+4. If happy with results, merge "patch-<date>" back into prod
+5. Delete "patch-<date>"
 
 * Preserving local branch files during merge
 git merge --no-commit <merge-branch>
@@ -49,7 +63,7 @@ git commit -m "merged <merge-branch>"
 * Adding file from different branch
 git restore -s <source-branch> -- <file-name>
 
-* Additional files
+* Additional files (not in vendor upstream)
 vendor_merge.org
 
 ** /lisp
@@ -65,7 +79,6 @@ install_instructions.org
 
 ** /site-lisp/color-theme-sanityinc-tomorrow
 sanityinc-tomorrow-idle-theme.el
-
 
 * Common Tasks
 ** Emacs
