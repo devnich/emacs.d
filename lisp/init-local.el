@@ -127,15 +127,23 @@
              (ibuffer-jump-to-buffer recent-buffer-name)))
 (ad-activate 'ibuffer)
 
-;;; Set which flags are passed to ls for dired display. Emulate the ls command on Windows.
-(if *is-windows* ;; (string-equal system-type "windows-nt")
-    (progn (setq ls-lisp-dirs-first t)
-           (setq ls-lisp-ignore-case t)
-           (setq ls-lisp-UCA-like-collation t)
-           (setq ls-lisp-use-string-collate nil))  ; mimics -v
-  (setq dired-listing-switches "-alv --block-size=1M --group-directories-first"))
+;;; Set which flags are passed to ls for dired display
+;;;   1. Use GNU coreutils if present
+;;;   2. Emulate the ls command on Windows using the ls-lisp library
+;;;   3. Use BSD-safe switchs on Macs without coreutils installed
+(cond((executable-find "coreutils")
+      (setq dired-listing-switches "-alv --block-size=1M --group-directories-first"))
+     (*is-windows*
+      (progn (setq ls-lisp-dirs-first t)
+             (setq ls-lisp-ignore-case t)
+             (setq ls-lisp-UCA-like-collation t)
+             ;; mimic "-v"
+             (setq ls-lisp-use-string-collate nil)))
+     (*is-a-mac*
+      (setq dired-listing-switches "-alhv")))
 
-;; Use BSD-safe switches in TRAMP; root does not have access to Coreutils version of ls
+;; Always use BSD-safe switches in TRAMP; root does not have access to the
+;; coreutils version of ls
 (if *is-a-mac* (add-hook 'dired-mode-hook
                          (lambda ()
                            (when (file-remote-p dired-directory)
