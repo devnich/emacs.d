@@ -131,7 +131,7 @@
 ;;;   1. Use GNU coreutils if present
 ;;;   2. Emulate the ls command on Windows using the ls-lisp library
 ;;;   3. Use BSD-safe switchs on Macs without coreutils installed
-(cond((executable-find "coreutils")
+(cond((or (executable-find "coreutils") (eq system-type 'gnu/linux))
       (setq dired-listing-switches "-alv --block-size=1M --group-directories-first"))
      (*is-windows*
       (progn (setq ls-lisp-dirs-first t)
