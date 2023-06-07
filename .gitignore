@@ -61,6 +61,7 @@ site-lisp/package/
 /*.cache
 /site-lisp/**
 !site-lisp/README
+!site-lisp/install_instructions.org
 /site-lisp-archive/**
 /tutorial/**
 server/

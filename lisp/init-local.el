@@ -150,7 +150,7 @@
                              (setq-local dired-actual-switches "-alhv")))))
 
 ;;; Look for .org files to include in agenda
-;; (setq org-agenda-files (quote ("~/Dropbox/Library")))
+(if *is-a-mac* (setq org-agenda-files (quote ("~/Documents"))))
 
 (provide 'init-local)
 
