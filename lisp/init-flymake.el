@@ -10,7 +10,9 @@
   (with-eval-after-load 'flycheck
     (setq-default flycheck-disabled-checkers
                   (append (default-value 'flycheck-disabled-checkers)
-                          '(emacs-lisp emacs-lisp-checkdoc emacs-lisp-package))))
+                          '(emacs-lisp emacs-lisp-checkdoc emacs-lisp-package
+                                       ;; Disable extra Python linters (DD)
+                                       python-flake8 python-pylint))))
 
   (defun sanityinc/enable-flymake-flycheck ()
     (setq-local flymake-diagnostic-functions

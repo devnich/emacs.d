@@ -31,7 +31,7 @@
     (setq conda-env-home-directory (expand-file-name "~/opt/anaconda3")))
 
   ;; if you want interactive shell support, include:
-  ;; (conda-env-initialize-interactive-shells)
+  (conda-env-initialize-interactive-shells)
 
   ;; if you want eshell support, include:
   ;; (conda-env-initialize-eshell)
