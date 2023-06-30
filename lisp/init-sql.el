@@ -49,7 +49,10 @@ Fix for the above hasn't been released as of Emacs 25.2."
 
 (require-package 'sqlformat)
 (with-eval-after-load 'sql
-  (define-key sql-mode-map (kbd "C-c C-f") 'sqlformat))
+  (define-key sql-mode-map (kbd "C-c C-f") 'sqlformat)
+  ;; Specify reformat arguments (DD)
+  (setq sqlformat-args '("--reindent" "--indent_width=2" "--indent_columns"
+                         "--use_space_around_operators" "--wrap_after=80")))
 
 ;; Package ideas:
 ;;   - PEV
@@ -133,6 +136,21 @@ This command currently blocks the UI, sorry."
     (sql-set-sqli-buffer)))
 
 (add-hook 'sql-interactive-mode-hook 'global-inferior-sqlite)
+
+;; Use SQL-specific face variables instead of generic font-lock
+(make-face 'sql-keyword-face)
+(make-face 'sql-type-face)
+(set-face-foreground 'sql-keyword-face "#0000ff") ; blue
+(set-face-foreground 'sql-type-face "#ff8c00")    ; orange
+
+(defun gilgamesh/custom-sql-faces ()
+  (set (make-local-variable 'font-lock-keyword-face)
+       'sql-keyword-face)
+  (set (make-local-variable 'font-lock-type-face)
+       'sql-type-face))
+
+(add-hook 'sql-mode-hook 'gilgamesh/custom-sql-faces)
+
 
 
 (provide 'init-sql)
