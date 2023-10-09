@@ -4,10 +4,15 @@
 
 (require-package 'pdf-tools)
 
-;; Supports retinal display, which uses more memory:
-;;   https://github.com/politza/pdf-tools/issues/51
+;;; Docs https://github.com/vedang/pdf-tools
 
-(setq pdf-view-use-scaling t
-      pdf-view-use-imagemagick nil)
+;;; After upgrading Poppler, run M-x pdf-tools-install to rebuild.
+
+;;; Activate at startup
+;; (pdf-tools-install)
+
+;;; Activate on demand
+(pdf-loader-install)
+
 
 (provide 'init-pdf)
