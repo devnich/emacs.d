@@ -9,7 +9,7 @@
 ;;; f2: 2-column commands
 ;;; f3: kmacro-start-macro-or-insert-counter
 ;;; f4: kmacro-end-or-call-macro
-;;; f5: deadgrep
+;;; f5: ripgrep
 ;;; f6: compile (make -k)
 ;;; f7: see most recent buffer in other window
 ;;; ( : Dired Hide Details mode
@@ -81,6 +81,9 @@
 
 ;;; Suppress entering debug on error
 (setq debug-on-error nil)
+
+;;; Debug global TAG completion
+(setq debug-on-message "Making tags completion table")
 
 ;;; Save desktop on exit
 (desktop-save-mode 1)

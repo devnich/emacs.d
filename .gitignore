@@ -16,6 +16,7 @@ CVS
 /.org-id-locations
 cookies
 /newsticker
+/tree-sitter
 \#*
 /elpa
 /elpa-*
@@ -49,7 +50,7 @@ site-lisp/package/
 /plantuml.jar
 /magithub
 .cache/
-/forge-database.sqlite
+/forge-*.sqlite
 /transient
 /.lsp-session-v1
 /smex-items

@@ -19,10 +19,15 @@
   (setq-default ag-highlight-search t)
   (global-set-key (kbd "M-?") 'ag-project))
 
-;;; Invoke ripgrep with deadgrep instead of ag-project (DD)
+;;; Customized configuration for rg (DD)
+;;;   cf. https://rgel.readthedocs.io/en/latest/usage.html
 (when (and (executable-find "rg")
-           (maybe-require-package 'deadgrep))
-  (global-set-key (kbd "<f5>") #'deadgrep))
+           (maybe-require-package 'rg))
+  (global-set-key (kbd "<f5>") 'rg-project))
+
+;;; javascript.el has hard-coded references to rg, so switching here for consistency
+;; (maybe-require-package 'deadgrep))
+;; (global-set-key (kbd "<f5>") #'deadgrep))
 
 
 (provide 'init-grep)

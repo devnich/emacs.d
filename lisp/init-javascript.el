@@ -27,19 +27,19 @@
 (with-eval-after-load 'js2-mode
   ;; Disable js2 mode's syntax error highlighting by default...
   (setq-default js2-mode-show-parse-errors nil
-                js2-mode-show-strict-warnings nil)
+                js2-mode-show-strict-warnings nil))
   ;; ... but enable it if flycheck can't handle javascript
-  (autoload 'flycheck-get-checker-for-buffer "flycheck")
-  (defun sanityinc/enable-js2-checks-if-flycheck-inactive ()
-    (unless (flycheck-get-checker-for-buffer)
-      (setq-local js2-mode-show-parse-errors t)
-      (setq-local js2-mode-show-strict-warnings t)
-      (when (derived-mode-p 'js-mode)
-        (js2-minor-mode 1))))
-  (add-hook 'js-mode-hook 'sanityinc/enable-js2-checks-if-flycheck-inactive)
-  (add-hook 'js2-mode-hook 'sanityinc/enable-js2-checks-if-flycheck-inactive)
+  ;; (autoload 'flycheck-get-checker-for-buffer "flycheck")
+  ;; (defun sanityinc/enable-js2-checks-if-flycheck-inactive ()
+  ;;   (unless (flycheck-get-checker-for-buffer)
+  ;;     (setq-local js2-mode-show-parse-errors t)
+  ;;     (setq-local js2-mode-show-strict-warnings t)
+  ;;     (when (derived-mode-p 'js-mode)
+  ;;       (js2-minor-mode 1))))
+  ;; (add-hook 'js-mode-hook 'sanityinc/enable-js2-checks-if-flycheck-inactive)
+  ;; (add-hook 'js2-mode-hook 'sanityinc/enable-js2-checks-if-flycheck-inactive)
 
-  (js2-imenu-extras-setup))
+  (js2-imenu-extras-setup)
 
 (add-to-list 'interpreter-mode-alist (cons "node" 'js2-mode))
 
@@ -48,19 +48,22 @@
   (sanityinc/major-mode-lighter 'js2-jsx-mode "JSX2"))
 
 
-
+(require 'derived)
 (when (and (or (executable-find "rg") (executable-find "ag"))
            (maybe-require-package 'xref-js2))
   (when (executable-find "rg")
     (setq-default xref-js2-search-program 'rg))
+
   (defun sanityinc/enable-xref-js2 ()
     (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t))
-  (with-eval-after-load 'js
-    (define-key js-mode-map (kbd "M-.") nil)
-    (add-hook 'js-mode-hook 'sanityinc/enable-xref-js2))
+
+  (let ((base-mode (if (fboundp 'js-base-mode) 'js-base-mode 'js-mode)))
+    (with-eval-after-load 'js
+      (add-hook (derived-mode-hook-name base-mode) 'sanityinc/enable-xref-js2)
+      (define-key js-mode-map (kbd "M-.") nil)))
+
   (with-eval-after-load 'js2-mode
-    (define-key js2-mode-map (kbd "M-.") nil)
-    (add-hook 'js2-mode-hook 'sanityinc/enable-xref-js2)))
+    (define-key js2-mode-map (kbd "M-.") nil)))
 
 
 

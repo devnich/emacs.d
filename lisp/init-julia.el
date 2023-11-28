@@ -5,9 +5,6 @@
 ;;; Julia prerequisites:
 ;;;   Parsers package
 
-;;; Increase the server timeout when running eglot-jl for the first time.
-;; (setq eglot-connect-timeout 600)
-
 (maybe-require-package 'julia-repl)
 (maybe-require-package 'eglot-jl)
 

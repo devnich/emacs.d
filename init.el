@@ -32,6 +32,12 @@
             (lambda () (setq gc-cons-threshold normal-gc-cons-threshold))))
 
 
+;; Process performance tuning
+
+(setq read-process-output-max (* 4 1024 1024))
+(setq process-adaptive-read-buffering nil)
+
+
 ;; Bootstrap config
 
 
@@ -61,7 +67,7 @@
 (require 'init-grep)
 (require 'init-uniquify)
 (require 'init-ibuffer)
-(require 'init-flymake)
+;; (require 'init-flymake)
 (require 'init-eglot)
 
 (require 'init-recentf)
@@ -99,13 +105,13 @@
 (require 'init-python)
 (require 'init-haskell)
 (require 'init-elm)
-(require 'init-purescript)
+;; (require 'init-purescript)
 (require 'init-ruby)
 (require 'init-rails)
 (require 'init-sql)
 (require 'init-ocaml)
 (require 'init-j)
-(require 'init-nim)
+;; (require 'init-nim)
 (require 'init-rust)
 (require 'init-toml)
 (require 'init-yaml)
@@ -135,7 +141,9 @@
 
 ;;(require 'init-twitter)
 ;; (require 'init-mu)
-(require 'init-ledger)
+;; (require 'init-ledger)
+(require 'init-lua)
+;; (require 'init-terminals)
 
 ;;; Derek's packages
 (require 'init-ess)
@@ -148,7 +156,6 @@
 
 (require-package 'sudo-edit)
 (require-package 'gnuplot)
-(require-package 'lua-mode)
 (require-package 'htmlize)
 (when *is-a-mac*
   (require-package 'osx-location))
@@ -163,6 +170,11 @@
   (add-hook 'after-init-hook 'global-eldoc-mode))
 
 (require 'init-direnv)
+
+(when (and (require 'treesit nil t)
+           (fboundp 'treesit-available-p)
+           (treesit-available-p))
+  (require 'init-treesitter))
 
 
 

@@ -122,8 +122,6 @@ there is no current file, eval the current buffer."
   (make-local-variable 'hippie-expand-try-functions-list)
   (add-to-list 'hippie-expand-try-functions-list 'try-complete-lisp-symbol t)
   (add-to-list 'hippie-expand-try-functions-list 'try-complete-lisp-symbol-partially t))
-
-
 
 ;; Automatic byte compilation
 
@@ -179,26 +177,29 @@ there is no current file, eval the current buffer."
   "Enable features useful in any Lisp mode."
   (run-hooks 'sanityinc/lispy-modes-hook))
 
-(defun sanityinc/emacs-lisp-setup ()
-  "Enable features useful when working with elisp."
-  (set-up-hippie-expand-for-elisp))
+;; (defun sanityinc/emacs-lisp-setup ()
+;;   "Enable features useful when working with elisp."
+;;   (set-up-hippie-expand-for-elisp))
 
-(defconst sanityinc/elispy-modes
-  '(emacs-lisp-mode ielm-mode)
-  "Major modes relating to elisp.")
+;; (defconst sanityinc/elispy-modes
+;;   '(emacs-lisp-mode ielm-mode)
+;;   "Major modes relating to elisp.")
 
-(defconst sanityinc/lispy-modes
-  (append sanityinc/elispy-modes
-          '(lisp-mode inferior-lisp-mode lisp-interaction-mode))
-  "All lispy major modes.")
+;; (defconst sanityinc/lispy-modes
+;;   (append sanityinc/elispy-modes
+;;           '(lisp-mode inferior-lisp-mode lisp-interaction-mode))
+;;   "All lispy major modes.")
 
 (require 'derived)
 
-(dolist (hook (mapcar #'derived-mode-hook-name sanityinc/lispy-modes))
-  (add-hook hook 'sanityinc/lisp-setup))
+;; (dolist (hook (mapcar #'derived-mode-hook-name sanityinc/lispy-modes))
+;;   (add-hook hook 'sanityinc/lisp-setup))
 
-(dolist (hook (mapcar #'derived-mode-hook-name sanityinc/elispy-modes))
-  (add-hook hook 'sanityinc/emacs-lisp-setup))
+;; (dolist (hook (mapcar #'derived-mode-hook-name sanityinc/elispy-modes))
+;;   (add-hook hook 'sanityinc/emacs-lisp-setup))
+
+(dolist (mode '(emacs-lisp-mode ielm-mode lisp-mode inferior-lisp-mode lisp-interaction-mode))
+  (add-hook (derived-mode-hook-name mode) 'sanityinc/lisp-setup))
 
 (when (boundp 'eval-expression-minibuffer-setup-hook)
   (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode))
@@ -270,8 +271,8 @@ there is no current file, eval the current buffer."
   (add-hook 'emacs-lisp-mode-hook 'highlight-quoted-mode))
 
 
-(when (maybe-require-package 'package-lint-flymake)
-  (add-hook 'emacs-lisp-mode-hook #'package-lint-flymake-setup))
+;; (when (maybe-require-package 'package-lint-flymake)
+;;   (add-hook 'emacs-lisp-mode-hook #'package-lint-flymake-setup))
 
 
 
@@ -283,7 +284,7 @@ there is no current file, eval the current buffer."
 (maybe-require-package 'cl-libify)
 
 
-(maybe-require-package 'flycheck-relint)
+;; (maybe-require-package 'flycheck-relint)
 
 
 
