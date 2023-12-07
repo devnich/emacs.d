@@ -136,6 +136,62 @@ advice for `require-package', to which ARGS are passed."
 
 (add-hook 'package-menu-mode-hook 'sanityinc/maybe-widen-package-menu-columns)
 
+
+;; For those of you who like to update your package.el packages manually but
+;; would also like to see what recent commits have been made, you might like
+;; these functions. Note that except for popper, all of this is built-in to
+;; emacs 29. Any tips on making these better are very welcome!
+;; cf. https://www.reddit.com/r/emacs/comments/10ktqj0/comment/j62kxgd/
+
+;; Show Packages Ready for Updating
+(defun package-list-upgradable-packages ()
+  "Refresh and list upgradable packages."
+  (interactive)
+  (save-window-excursion
+    (let (package-menu-async)
+      (package-list-packages)))
+  (pop-to-buffer "*Packages*")
+  (delete-other-windows)
+  (package-menu-filter-upgradable))
+
+;; Show Git change log for package updates. This only works when packages are
+;; installed with packages-vc.
+(maybe-require-package 'popper)
+
+(defun package-browse-vc-log (desc)
+  "Open a magit log buffer in popper window for package under point.
+DESC must be a `package-desc' object and must have a link to a recognized repo host."
+  (interactive (list (package--query-desc))
+               package-menu-mode)
+  ;; (require 'popper)
+  (unless desc
+    (user-error "No package here"))
+  (let* ((url (cdr (assoc :url (package-desc-extras desc))))
+         (tmp "/tmp/")
+         (tmpd (concat tmp "tmpdir/"))
+         (vc-log-short-style '(file))
+         (vc-git-root-log-format '("%ad: %d%h - %s" "\\(?1:[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\}\\): \\(?2: ([^)]+)\\)?\\(?3:[0-9a-z]+\\)"
+                                   ((1 'change-log-date)
+                                    (2 'change-log-list nil lax)
+                                    (3 'log-view-message)))))
+    ;; checks
+    (cond ((not url) ;; check that there is a link
+           (user-error "No website for %s" (package-desc-name desc)))
+          ;; check that link is to a recognized repo
+          ((not (and url (alist-get url package-vc-heuristic-alist
+                                    nil nil #'string-match-p)))
+           (user-error "No repository available for %s" (package-desc-name desc)))
+          ;; proceed to clone repo
+          (t
+           (shell-command (concat "rm -rf " tmpd))
+           (shell-command (concat "cd " tmp " && git clone --filter=blob:none --no-checkout " url " tmpdir && cd tmpdir"))
+           (when-let ((default-directory tmpd))
+             (vc-print-log nil 15))
+           ;; move buffer window to popper (optional)
+           (popper-toggle-type "*vc-change-log*")))))
+
+(bind-key "l" #'package-browse-vc-log 'package-menu-mode-map)
+
 
 (provide 'init-elpa)
 ;;; init-elpa.el ends here
