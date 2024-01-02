@@ -17,8 +17,23 @@
   (add-to-list 'polymode-run-these-after-change-functions-in-other-buffers 'eglot--after-change)
   (add-to-list 'polymode-run-these-before-change-functions-in-other-buffers 'eglot--before-change))
 
-;;; ESS uses flymake for syntax checking by default; this produces errors
-;; (setq ess-use-flymake nil)
+;;; Disable annoying and non-performant options
+(setq ess-eval-visibly nil)
+(setq ess-indent-with-fancy-comments nil)
+(setq ess-use-eldoc 'script-only)
+(setq ess-use-flymake nil)
+
+;;; --------------------------
+;;; Usage Notes
+;;; --------------------------
+;; Manual: https://ess.r-project.org/Manual/ess.html
+
+;; To source a file, use ess-load-file (C-c M-l). This will default to the
+;; current buffer.
+
+;; To send a break to the inferior R process, try:
+;;  1. C-g C-c C-c
+;;  2. (setq comint-prompt-read-only nil) so that C-c C-c will succeed
 
 ;;; --------------------------
 ;;; Debug slow input in ESS
@@ -29,17 +44,10 @@
 ;;   https://emacs.stackexchange.com/a/62170
 ;;   https://github.com/emacs-ess/ESS/issues/1062
 ;; (setq ess-r--no-company-meta t)
-
-;;; Disable flycheck by default
-;; (setq-default flycheck-disabled-checkers '(r-lintr))
-
-;;; Consider disabling native fontification in Org blocks
-;; (setq org-src-fontify-natively nil)
-
-;;; Consider disabling flyspell in Org mode
-
-;;; Disable pop-up help
 ;; (company-quickhelp-mode -1)
+
+;;; Disable eldoc entirely
+;; (setq ess-use-eldoc nil)
 
 
 (provide 'init-ess)
