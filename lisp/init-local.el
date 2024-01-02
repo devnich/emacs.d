@@ -84,6 +84,7 @@
 
 ;;; Debug global TAG completion
 (setq debug-on-message "Making tags completion table")
+(setq debug-on-message "Key sequence C-c ESC starts with non-prefix key C-c")
 
 ;;; Save desktop on exit
 (desktop-save-mode 1)

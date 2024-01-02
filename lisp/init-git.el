@@ -49,6 +49,7 @@
   (add-hook 'git-commit-mode-hook 'goto-address-mode))
 
 
+;;; Derek's customizations
 (when *is-a-mac*
   ;; Specify git executable if necessary (DD)
   ;; (setq magit-git-executable "/usr/bin/git")
@@ -57,6 +58,8 @@
 
 ;;; Allow Magit to clone repositories without interruption (DD)
 ;; (setq magit-clone-set-remote.pushDefault nil)
+
+;; NB: magit can run arbitrary git commands via the ! key.
 
 
 ;; Convenient binding for vc-git-grep

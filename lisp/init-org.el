@@ -82,6 +82,18 @@
 (add-hook 'org-mode-hook 'flyspell-mode)
 
 
+;;; Debug Org issues
+
+;;; Org Mode Symbols
+;; https://orgmode.org/worg/org-symbols.html
+
+;;; Show all markup
+;; (visible-mode)
+
+;;; Disable native fontification in Org blocks
+;; (setq org-src-fontify-natively nil)
+
+
 
 (maybe-require-package 'writeroom-mode)
 
@@ -392,15 +404,16 @@ typical word processor."
       (emacs-lisp . t)
       (gnuplot . t)
       (haskell . nil)
+      (julia . t)
       (latex . t)
       ;; (ledger . t)
       (ocaml . nil)
       (octave . t)
       (plantuml . t)
       (python . t)
+      (R . t)
       (ruby . t)
       (screen . nil)
-      (sh . t) ;; obsolete
       (shell . t)
       (sql . t)
       (sqlite . t)))))
