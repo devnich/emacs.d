@@ -81,6 +81,10 @@
 (add-hook 'org-mode-hook (lambda () (setq line-spacing 0.2)))
 (add-hook 'org-mode-hook 'flyspell-mode)
 
+;;; Set bullet styles for nested lists
+(setq org-list-demote-modify-bullet
+      '(("+" . "-") ("-" . "+") ("1." . "-")))
+
 
 ;;; Debug Org issues
 
