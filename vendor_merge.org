@@ -81,7 +81,14 @@ install_instructions.org
 sanityinc-tomorrow-idle-theme.el
 
 * Common Tasks
-** Emacs
+** Disable Emacs sessions
+1. Remove from init.el
+   - init-recentf
+   - init-sessions
+2. Update init-local.el
+   - desktop-save-mode 0
+     
+** Emacs commands
 1. Mark whole buffer
    C-x h
 2. Remove empty line
