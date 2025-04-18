@@ -4,9 +4,13 @@
 
 (require-package 'pdf-tools)
 
-;;; Docs https://github.com/vedang/pdf-tools
+;;; Documentation available at https://github.com/vedang/pdf-tools
+;;; This package has two non-Emacs dependencies:
+;;;   1. poppler (PDF viewer)
+;;;   2. fontconfig (allow poppler to use all installed system fonts)
 
-;;; After upgrading Poppler, run M-x pdf-tools-install to rebuild.
+;;; After upgrading poppler, run (pdf-tools-install) in Emacs to recompile
+;;; poppler with appropriate settings.
 
 ;;; Activate at startup
 ;; (pdf-tools-install)

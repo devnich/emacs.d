@@ -11,8 +11,8 @@
            (if *is-a-mac*
                (setq multi-term-program "~/.nix-profile/bin/fish")
              (setq multi-term-program "/usr/bin/fish")))
-  (progn (setq multi-term-buffer-name "~bash")
-         (setq multi-term-program "/bin/bash")))
+  ;; else use default system shell
+  )
 
 ;;; Create new terminal buffer
 (global-set-key (kbd "C-c T") 'multi-term)

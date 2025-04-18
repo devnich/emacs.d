@@ -87,7 +87,7 @@ sanityinc-tomorrow-idle-theme.el
    - init-sessions
 2. Update init-local.el
    - desktop-save-mode 0
-     
+
 ** Emacs commands
 1. Mark whole buffer
    C-x h
@@ -97,6 +97,8 @@ sanityinc-tomorrow-idle-theme.el
 3. Remove matching line
    M-x flush-lines
    [regex]
+4. Insert newline
+   C-q C-j
 
 ** rsync
 1. Pre-upgrade backups
