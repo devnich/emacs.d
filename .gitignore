@@ -16,8 +16,8 @@ CVS
 /.org-id-locations
 cookies
 /newsticker
-/tree-sitter
 \#*
+/tree-sitter
 /elpa
 /elpa-*
 site-lisp/package/
@@ -50,12 +50,14 @@ site-lisp/package/
 /plantuml.jar
 /magithub
 .cache/
-/forge-*.sqlite
+/forge-database.sqlite
 /transient
 /.lsp-session-v1
 /smex-items
 /eln-cache/
 /projects
+/forge-*.sqlite
+/projectile.cache
 
 # Derek's additions
 .DS_Store
