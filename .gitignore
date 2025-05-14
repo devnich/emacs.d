@@ -17,7 +17,9 @@ CVS
 cookies
 /newsticker
 \#*
-/tree-sitter
+/tree-sitter/**
+!tree-sitter/install_instructions.org
+!tree-sitter/rename.sh
 /elpa
 /elpa-*
 site-lisp/package/

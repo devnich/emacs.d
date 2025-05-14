@@ -1,0 +1,7 @@
+#+STARTUP: showall indent
+* How to install or update Tree Sitter grammars
+
+1. Download pre-compiled release for your platform from https://github.com/emacs-tree-sitter/tree-sitter-langs/releases into the ~.emacs/tree-sitter~ directory
+2. Unzip: ~gunzip <file>.tar.gz~
+3. Untar: ~tar xf <file>.tar~
+4. Rename the ~.dylib~ files by calling the ~rename.sh~ script

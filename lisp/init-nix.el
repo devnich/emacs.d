@@ -8,7 +8,7 @@
         (when (and (fboundp 'treesit-ready-p)
                    (treesit-ready-p 'nix t)
                    (fboundp 'nix-ts-mode))
-          (add-to-ist 'auto-mode-alist '("\\.nix\\'" . nix-ts-mode))))
+          (add-to-list 'auto-mode-alist '("\\.nix\\'" . nix-ts-mode))))
       (add-hook 'after-init-hook 'sanityinc/set-nix-ts-auto-mode))
   (mabe-require-package 'nix-mode))
 
