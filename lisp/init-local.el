@@ -36,8 +36,9 @@
       (*is-a-mac*
        (set-face-attribute 'default nil :font "Menlo-14")))
 
-;;; Use a nice variable-pitch font
-(if *is-a-mac*
+;;; Use a nice variable-pitch font. By default, Hoefler will only be available
+;;; when *is-a-mac* is true.
+(if (member "Hoefler Text" (font-family-list))
     ;; Hoefler Text for serif, Helvetica Neue for sans-serif
     (set-face-attribute 'variable-pitch nil :font "Hoefler Text-16")
   (set-face-attribute 'variable-pitch nil :font "Arial-14"))
@@ -53,6 +54,10 @@
 ;;; Scroll single line
 (setq scroll-step 1)
 
+;;; Improve scrolling performance
+;; (setq fast-but-imprecise-scrolling t)
+;; Also consider https://github.com/jdtsmith/ultra-scroll
+
 ;;; Add menu bar back
 (menu-bar-mode 1)
 
@@ -61,8 +66,6 @@
 
 ;;; Defer fontifying when input is pending. Setting this to 0 might cause severe input lag?
 (setq jit-lock-defer-time 0.1)  ;; nil by default
-
-;; (setq fast-but-imprecise-scrolling t)
 
 ;;; Defer fontifying until user is inactive
 (setq jit-lock-stealth-time 0.5)
@@ -108,9 +111,9 @@
 ;;; Shells
 
 ;;; Invoke eshell on startup
-(setq eshell-buffer-name "~$")
-(add-hook 'emacs-startup-hook 'eshell)
-(cd (getenv "HOME"))
+;; (setq eshell-buffer-name "~$")
+;; (add-hook 'emacs-startup-hook 'eshell)
+;; (cd (getenv "HOME"))
 
 ;;; Suppress yes/no prompt when quitting shells
 (add-hook 'comint-exec-hook
@@ -136,7 +139,7 @@
 ;;;   2. Emulate the ls command on Windows using the ls-lisp library
 ;;;   3. Use BSD-safe switchs on Macs without coreutils installed
 (cond((or (executable-find "coreutils") (eq system-type 'gnu/linux))
-      (setq dired-listing-switches "-alv --block-size=1M --group-directories-first"))
+      (setq dired-listing-switches "-al --block-size=1M --group-directories-first"))
      (*is-windows*
       (progn (setq ls-lisp-dirs-first t)
              (setq ls-lisp-ignore-case t)
@@ -144,7 +147,7 @@
              ;; mimic "-v"
              (setq ls-lisp-use-string-collate nil)))
      (*is-a-mac*
-      (setq dired-listing-switches "-alhv")))
+      (setq dired-listing-switches "-alh")))
 
 ;; Always use BSD-safe switches in TRAMP; root does not have access to the
 ;; coreutils version of ls

@@ -143,12 +143,13 @@
 ;; (require 'init-mu)
 ;; (require 'init-ledger)
 (require 'init-lua)
-;; (require 'init-terminals)
+;; (require 'init-terminals)  ;; This will invoke EAT if that's desired
 
 ;;; Derek's packages
+(require 'init-eshell)
 (require 'init-ess)
 (require 'init-julia)
-(require 'init-multi-term)
+;; (require 'init-multi-term)
 (require 'init-pdf)
 (require 'init-web)
 
