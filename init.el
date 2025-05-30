@@ -24,7 +24,7 @@
 
 
 ;; Adjust garbage collection thresholds during startup, and thereafter
-
+;;; TODO: Investigate effect of Purcell's updates (DD)
 (let ((normal-gc-cons-threshold (* 20 1024 1024))
       (init-gc-cons-threshold (* 128 1024 1024)))
   (setq gc-cons-threshold init-gc-cons-threshold)
@@ -121,15 +121,15 @@
 ;;; Nix package doesn't work on Windows (DD)
 (unless *is-windows*
   (require 'init-nix))
-(require 'init-nix)
 (maybe-require-package 'nginx-mode)
 
 (require 'init-paredit) ;; breaks ibuffers (DD)
 (require 'init-lisp)
-(require 'init-slime)
+;; (require 'init-slime)
+(require 'init-sly)
 (require 'init-clojure)
 (require 'init-clojure-cider)
-(require 'init-common-lisp)
+;; (require 'init-common-lisp)
 
 (when *spell-check-support-enabled*
   (require 'init-spelling))

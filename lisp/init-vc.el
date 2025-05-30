@@ -11,9 +11,12 @@
   (add-hook 'after-init-hook 'global-diff-hl-mode)
 
   (with-eval-after-load 'diff-hl
-    (define-key diff-hl-mode-map
-      (kbd "<left-fringe> <mouse-1>")
-      'diff-hl-diff-goto-hunk)))
+    ;; (define-key diff-hl-mode-map
+    ;;   (kbd "<left-fringe> <mouse-1>")
+    ;;   'diff-hl-diff-goto-hunk)))
+    (define-key diff-hl-mode-map (kbd "<left-fringe> <mouse-1>") 'diff-hl-diff-goto-hunk)
+    (define-key diff-hl-mode-map (kbd "M-C-]") 'diff-hl-next-hunk)
+    (define-key diff-hl-mode-map (kbd "M-C-[") 'diff-hl-previous-hunk)))
 
-(provide 'init-vc)
+    (provide 'init-vc)
 ;;; init-vc.el ends here
