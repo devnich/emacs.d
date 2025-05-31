@@ -63,6 +63,7 @@ site-lisp/package/
 
 # Derek's additions
 .DS_Store
+ielm-history.eld
 /*.cache
 /site-lisp/**
 !site-lisp/README

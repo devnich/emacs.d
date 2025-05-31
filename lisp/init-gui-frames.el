@@ -89,8 +89,18 @@
 (require-package 'disable-mouse)
 
 
-(when (fboundp 'pixel-scroll-precision-mode)
-  (pixel-scroll-precision-mode))
+;;; This is called automatically by ultra-scroll (DD)
+;; (when (fboundp 'pixel-scroll-precision-mode)
+;;   (pixel-scroll-precision-mode))
+
+;;; TODO: Re-test when native compilation is enabled (DD)
+(use-package ultra-scroll
+  :vc (:url "https://github.com/jdtsmith/ultra-scroll") ; For Emacs>=30
+  :init
+  (setq scroll-conservatively 101 ; or whatever value you prefer, since v0.4
+        scroll-margin 0)          ; important: scroll-margin>0 not yet supported
+  :config
+  (ultra-scroll-mode 1))
 
 
 (provide 'init-gui-frames)

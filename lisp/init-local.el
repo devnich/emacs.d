@@ -51,13 +51,6 @@
     (setq line-spacing 0.2))
   (redraw-frame (selected-frame)))
 
-;;; Scroll single line
-(setq scroll-step 1)
-
-;;; Improve scrolling performance
-;; (setq fast-but-imprecise-scrolling t)
-;; Also consider https://github.com/jdtsmith/ultra-scroll
-
 ;;; Add menu bar back
 (menu-bar-mode 1)
 
@@ -65,7 +58,8 @@
 (setq-default fill-column 80)
 
 ;;; Defer fontifying when input is pending. Setting this to 0 might cause severe input lag?
-(setq jit-lock-defer-time 0.1)  ;; nil by default
+(setq jit-lock-defer-time 0.2)  ;; nil by default
+;; (setq redisplay-skip-fontification-on-input t)
 
 ;;; Defer fontifying until user is inactive
 (setq jit-lock-stealth-time 0.5)
