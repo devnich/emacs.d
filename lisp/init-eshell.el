@@ -10,10 +10,10 @@
         eshell-prompt-function 'epe-theme-lambda))
 
 ;;; Sends "visual" commands to external term buffer
-;; (with-eval-after-load "em-term"
-;;   (add-to-list 'eshell-visual-options '("git" "--help" "--paginate"))
-;;   (add-to-list 'eshell-visual-subcommands '("git" "log" "diff" "show"))
-;;   )
+(with-eval-after-load "em-term"
+  (add-to-list 'eshell-visual-options '("git" "--help" "--paginate"))
+  (add-to-list 'eshell-visual-subcommands '("git" "log" "diff" "show"))
+  )
 
 ;;; Eshell aliases; see more examples at  https://olddeuteronomy.github.io/post/eshell-aliases-and-prompt/
 (add-hook 'eshell-mode-hook

@@ -99,6 +99,17 @@ sanityinc-tomorrow-idle-theme.el
    [regex]
 4. Insert newline
    C-q C-j
+5. Consult ripgrep
+   M-?
+6. Async shell command
+   M-&
+
+** Prospective Emacs packages
+1. Combobulate (treesitter-based navigation). Can this replace paredit?
+   - tree-sitter is just parsing (for, e.g. syntax highlighting and navigation)
+   - eglot/lsp are semantically aware (docs, autocompletion, cross-refrenencing)
+2. Casual (transient modes for various utilities)
+3. Eat (terminal emulator, if necessary)
 
 ** rsync
 1. Pre-upgrade backups

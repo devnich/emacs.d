@@ -23,12 +23,11 @@
 ;;;   cf. https://rgel.readthedocs.io/en/latest/usage.html
 (when (and (executable-find "rg")
            (maybe-require-package 'rg))
-  (global-set-key (kbd "<f5>") 'rg-project))
-
-;;; javascript.el has hard-coded references to rg, so switching here for consistency
-;; (maybe-require-package 'deadgrep))
-;; (global-set-key (kbd "<f5>") #'deadgrep))
-
+  (rg-enable-default-bindings)
+  ;; Leaving isearch disabled for the time being (DD)
+  ;; (require 'rg-isearch)
+  ;; (define-key isearch-mode-map "\M-sr" 'rg-isearch-menu)
+  )
 
 (provide 'init-grep)
 ;;; init-grep.el ends here
