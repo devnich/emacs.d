@@ -57,6 +57,9 @@
 ;;; Set default column width
 (setq-default fill-column 80)
 
+;;; Debug font lock issues
+(setq jit-lock-debug-mode t)
+
 ;;; Defer fontifying when input is pending. Setting this to 0 might cause severe input lag?
 (setq jit-lock-defer-time 0.2)  ;; nil by default
 ;; (setq redisplay-skip-fontification-on-input t)
