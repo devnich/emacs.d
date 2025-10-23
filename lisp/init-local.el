@@ -136,7 +136,7 @@
 ;;;   2. Emulate the ls command on Windows using the ls-lisp library
 ;;;   3. Use BSD-safe switchs on Macs without coreutils installed
 (cond((or (executable-find "coreutils") (eq system-type 'gnu/linux))
-      (setq dired-listing-switches "-al --block-size=1M --group-directories-first"))
+      (setq dired-listing-switches "-alv --block-size=1M --group-directories-first"))
      (*is-windows*
       (progn (setq ls-lisp-dirs-first t)
              (setq ls-lisp-ignore-case t)
@@ -144,7 +144,7 @@
              ;; mimic "-v"
              (setq ls-lisp-use-string-collate nil)))
      (*is-a-mac*
-      (setq dired-listing-switches "-alh")))
+      (setq dired-listing-switches "-alhv")))
 
 ;; Always use BSD-safe switches in TRAMP; root does not have access to the
 ;; coreutils version of ls

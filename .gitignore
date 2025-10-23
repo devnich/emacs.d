@@ -36,7 +36,8 @@ site-lisp/package/
 /emms/
 /.smex-items
 /image-dired/
-/eshell
+/eshell/*
+!/eshell/alias
 /.cask/
 /.sx/
 /org-clock-save.el
@@ -70,4 +71,4 @@ ielm-history.eld
 !site-lisp/install_instructions.org
 /site-lisp-archive/**
 /tutorial/**
-server/
+/server/
