@@ -20,7 +20,14 @@
 (prefer-coding-system 'utf-8)
 (setq locale-coding-system 'utf-8)
 (unless (eq system-type 'windows-nt)
-  (set-selection-coding-system 'utf-8))
+  (set-selection-coding-system 'utf-8)
+
+  ;; Fix BSD man page formatting - DD
+  ;; Always process man pages as utf-8
+  (add-to-list 'process-coding-system-alist '("man" . utf-8))
+
+  ;; Configure groff via environment to avoid generating overstrike sequences
+  (setenv "GROFF_NO_SGR" "1"))
 
 (provide 'init-locales)
 ;;; init-locales.el ends here
