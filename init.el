@@ -127,8 +127,8 @@
 (require 'init-lisp)
 ;; (require 'init-slime)
 (require 'init-sly)
-(require 'init-clojure)
-(require 'init-clojure-cider)
+;; (require 'init-clojure)
+;; (require 'init-clojure-cider)
 ;; (require 'init-common-lisp)
 
 (when *spell-check-support-enabled*
@@ -139,9 +139,6 @@
 (require 'init-folding)
 (require 'init-dash)
 
-;;(require 'init-twitter)
-;; (require 'init-mu)
-;; (require 'init-ledger)
 (require 'init-lua)
 ;; (require 'init-terminals)  ;; This will invoke EAT if that's desired
 
@@ -149,7 +146,6 @@
 (require 'init-eshell)
 (require 'init-ess)
 (require 'init-julia)
-;; (require 'init-multi-term)
 (require 'init-pdf)
 (require 'init-web)
 
