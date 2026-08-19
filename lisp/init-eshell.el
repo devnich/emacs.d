@@ -15,6 +15,13 @@
   (add-to-list 'eshell-visual-subcommands '("git" "log" "diff" "show"))
   )
 
+;;; Wrap long lines
+(maybe-require-package 'adaptive-wrap)
+(add-hook 'eshell-mode-hook 'visual-line-mode)
+(add-hook 'eshell-mode-hook
+          (lambda () (setq adaptive-wrap-extra-indent 2)))
+(add-hook 'eshell-mode-hook 'adaptive-wrap-prefix-mode)
+
 ;;; Eshell aliases; see more examples at  https://olddeuteronomy.github.io/post/eshell-aliases-and-prompt/
 (add-hook 'eshell-mode-hook
           (lambda ()
