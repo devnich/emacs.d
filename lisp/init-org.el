@@ -205,6 +205,7 @@ typical word processor."
 
 (setq org-todo-keyword-faces
       (quote (("NEXT" :inherit warning)
+              ("HOLD" :inherit outline-4)
               ("PROJECT" :inherit font-lock-string-face))))
 
 

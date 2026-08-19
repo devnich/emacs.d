@@ -2,7 +2,8 @@
 ;;; Commentary:
 ;;; Code:
 
-(require-package 'lua-mode)
+(when (maybe-require-package 'lua-mode)
+  (add-auto-mode 'lua-mode "\\.lua\\'"))
 
 (setq-default lua-indent-level 2)
 
