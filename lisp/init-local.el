@@ -158,6 +158,9 @@
 ;;; Look for .org files to include in agenda
 (if *is-a-mac* (setq org-agenda-files (quote ("~/Documents"))))
 
+;;; Disable saving passwords
+(setq auth-source-save-behavior nil)
+
 (provide 'init-local)
 
 
