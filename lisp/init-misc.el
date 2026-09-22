@@ -6,11 +6,12 @@
 ;; Misc config - yet to be placed in separate files
 
 (add-auto-mode 'tcl-mode "^Portfile\\'")
-(fset 'yes-or-no-p 'y-or-n-p)
-(when (boundp 'use-short-answers)
-  (setq use-short-answers t))
 
-(add-hook 'prog-mode-hook 'goto-address-prog-mode)
+(if (boundp 'use-short-answers)
+    (setq use-short-answers t)
+  (fset 'yes-or-no-p 'y-or-n-p))
+
+(add-hook 'conf-mode-hook 'goto-address-prog-mode)
 (setq goto-address-mail-face 'link)
 
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)

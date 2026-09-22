@@ -7,7 +7,7 @@
 
 (add-auto-mode 'ruby-mode
                "\\.rxml\\'"
-               "\\.rjs\\'" "\\.irbrc\\'" "\\.pryrc\\'" "\\.builder\\'" "\\.ru\\'"
+               "\\.rjs\\'" "\\.irbrc\\'" "\\.pryrc\\'" "\\.builder\\'"
                "\\.gemspec\\'" "Kirkfile\\'")
 (add-auto-mode 'conf-mode "Gemfile\\.lock\\'")
 
@@ -64,10 +64,6 @@
 ;;; ri support
 (require-package 'yari)
 (defalias 'ri 'yari)
-
-
-
-(require-package 'bundler)
 
 
 (when (maybe-require-package 'yard-mode)

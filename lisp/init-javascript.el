@@ -60,7 +60,9 @@
   (let ((base-mode (if (fboundp 'js-base-mode) 'js-base-mode 'js-mode)))
     (with-eval-after-load 'js
       (add-hook (derived-mode-hook-name base-mode) 'sanityinc/enable-xref-js2)
-      (define-key js-mode-map (kbd "M-.") nil)))
+      (define-key js-mode-map (kbd "M-.") nil)
+      (when (boundp 'js-ts-mode-map)
+        (define-key js-ts-mode-map (kbd "M-.") nil))))
 
   (with-eval-after-load 'js2-mode
     (define-key js2-mode-map (kbd "M-.") nil)))
@@ -92,21 +94,6 @@
 
   (dolist (hook '(js2-mode-hook js-mode-hook))
     (add-hook hook 'inferior-js-keys-mode)))
-
-
-;; Alternatively, use skewer-mode
-
-(when (maybe-require-package 'skewer-mode)
-  (with-eval-after-load 'skewer-mode
-    (add-hook 'skewer-mode-hook
-              (lambda () (inferior-js-keys-mode -1)))))
-
-
-
-(when (maybe-require-package 'add-node-modules-path)
-  (dolist (mode '(typescript-mode js-mode js2-mode coffee-mode))
-    (add-hook (derived-mode-hook-name mode) 'add-node-modules-path)))
-
 
 (provide 'init-javascript)
 ;;; init-javascript.el ends here

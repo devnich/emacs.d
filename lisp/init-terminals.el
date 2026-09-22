@@ -13,9 +13,9 @@
   (add-hook 'eat-exit-hook 'sanityinc/on-eat-exit)
 
   (with-eval-after-load 'eat
-    (add-to-list 'eat-semi-char-non-bound-keys [?\e ?w])
-    (eat-update-semi-char-mode-map)
-    (eat-reload))
+    (custom-set-variables
+     `(eat-semi-char-non-bound-keys
+       (quote ,(cons [?\e ?w] (cl-remove [?\e ?w] eat-semi-char-non-bound-keys :test 'equal))))))
 
   (defcustom sanityinc/eat-map
     (let ((map (make-sparse-keymap)))
@@ -23,6 +23,16 @@
       map)
     "Prefix map for commands that create and manipulate eat buffers.")
   (fset 'sanityinc/eat-map sanityinc/eat-map)
+
+  (setq-default eat-term-scrollback-size (* 2 1024 1024))
+
+  (defun sanityinc/eat-term-get-suitable-term-name (&optional display)
+    "Version of `eat-term-get-suitable-term-name' which uses better-known TERM values."
+    (let ((colors (display-color-cells display)))
+      (cond ((> colors 8) "xterm-256color")
+            ((> colors 1) "xterm-color")
+            (t "xterm"))))
+  (setq eat-term-name 'sanityinc/eat-term-get-suitable-term-name)
 
   (global-set-key (kbd "C-c t") 'sanityinc/eat-map))
 

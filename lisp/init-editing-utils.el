@@ -69,7 +69,6 @@
 
 ;;; Newline behaviour (see also electric-indent-mode, enabled above)
 
-;; (global-set-key (kbd "RET") 'newline-and-indent)
 (defun sanityinc/newline-at-end-of-line ()
   "Move to end of line, enter a newline, and reindent."
   (interactive)
@@ -87,7 +86,9 @@
 
 (when (fboundp 'display-line-numbers-mode)
   (setq-default display-line-numbers-width 3)
-  (add-hook 'prog-mode-hook 'display-line-numbers-mode))
+  (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+  (add-hook 'yaml-mode-hook 'display-line-numbers-mode)
+  (add-hook 'yaml-ts-mode-hook 'display-line-numbers-mode))
 
 
 
@@ -195,8 +196,6 @@
 ;; use M-S-up and M-S-down, which will work even in lisp modes.
 
 (require-package 'move-dup)
-;; (global-set-key [M-up] 'move-dup-move-lines-up)
-;; (global-set-key [M-down] 'move-dup-move-lines-down)
 (global-set-key [M-S-up] 'move-dup-move-lines-up)
 (global-set-key [M-S-down] 'move-dup-move-lines-down)
 
@@ -226,38 +225,6 @@
   (diminish 'whole-line-or-region-local-mode))
 
 
-
-;; (defun sanityinc/open-line-with-reindent (n)
-;;   "A version of `open-line' which reindents the start and end positions.
-;; If there is a fill prefix and/or a `left-margin', insert them
-;; on the new line if the line would have been blank.
-;; With arg N, insert N newlines."
-;;   (interactive "*p")
-;;   (let* ((do-fill-prefix (and fill-prefix (bolp)))
-;;          (do-left-margin (and (bolp) (> (current-left-margin) 0)))
-;;          (loc (point-marker))
-;;          ;; Don't expand an abbrev before point.
-;;          (abbrev-mode nil))
-;;     (delete-horizontal-space t)
-;;     (newline n)
-;;     (indent-according-to-mode)
-;;     (when (eolp)
-;;       (delete-horizontal-space t))
-;;     (goto-char loc)
-;;     (while (> n 0)
-;;       (cond ((bolp)
-;;              (if do-left-margin (indent-to (current-left-margin)))
-;;              (if do-fill-prefix (insert-and-inherit fill-prefix))))
-;;       (forward-line 1)
-;;       (setq n (1- n)))
-;;     (goto-char loc)
-;;     (end-of-line)
-;;     (indent-according-to-mode)))
-
-;; (global-set-key (kbd "C-o") 'sanityinc/open-line-with-reindent)
-
-
-
 ;; M-^ is inconvenient, so also bind M-j
 (global-set-key (kbd "M-j") 'join-line)
 
@@ -273,7 +240,7 @@
       (let ;; To make `end-of-line' and etc. to ignore fields.
           ((inhibit-field-text-motion t))
         (sort-subr nil 'forward-line 'end-of-line nil nil
-                   (lambda (s1 s2) (eq (random 2) 0)))))))
+                   (lambda (_ _) (eq (random 2) 0)))))))
 
 
 
@@ -298,6 +265,10 @@ ORIG is the advised function, which is called with its ARGS."
 
 (advice-add 'kmacro-call-macro :around 'sanityinc/disable-features-during-macro-call)
 
+
+(when (maybe-require-package 'expreg)
+  (global-set-key (kbd "C-=") 'expreg-expand)
+  (global-set-key (kbd "C--") 'expreg-contract))
 
 (provide 'init-editing-utils)
 ;;; init-editing-utils.el ends here

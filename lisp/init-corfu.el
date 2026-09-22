@@ -14,7 +14,8 @@
       completion-category-overrides nil)
 (setq completion-cycle-threshold 4)
 
-(when (maybe-require-package 'corfu)
+;; (when (maybe-require-package 'corfu)
+(when (and (version< "28.1" emacs-version) (maybe-require-package 'corfu))
   (setq-default corfu-auto t)
   (with-eval-after-load 'eshell
     (add-hook 'eshell-mode-hook (lambda () (setq-local corfu-auto nil))))
@@ -25,9 +26,10 @@
     (corfu-popupinfo-mode))
 
   ;; Make Corfu also work in terminals, without disturbing usual behaviour in GUI
-  (when (maybe-require-package 'corfu-terminal)
-    (with-eval-after-load 'corfu
-      (corfu-terminal-mode)))
+  (when (version< emacs-version "31")
+    (when (maybe-require-package 'corfu-terminal)
+      (with-eval-after-load 'corfu
+        (corfu-terminal-mode))))
 
   ;; TODO: https://github.com/jdtsmith/kind-icon
   )

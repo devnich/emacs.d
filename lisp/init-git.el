@@ -7,8 +7,8 @@
 
 ;; TODO: link commits from vc-log to magit-show-commit
 ;; TODO: smerge-mode
-(require-package 'git-blamed)
-(require-package 'git-modes)
+;; (require-package 'git-blamed)
+(maybe-require-package 'git-modes)
 (when (maybe-require-package 'git-timemachine)
   (global-set-key (kbd "C-x v t") 'git-timemachine-toggle))
 
@@ -16,6 +16,9 @@
 
 (when (maybe-require-package 'magit)
   (setq-default magit-diff-refine-hunk 'all)
+  (setq-default magit-diff-visit-prefer-worktree t)
+
+  (sanityinc/fullframe-mode 'magit-status-mode)
 
   ;; Hint: customize `magit-repository-directories' so that you can use C-u M-F12 to
   ;; quickly open magit on any one of your projects.
@@ -41,9 +44,11 @@
 
 (maybe-require-package 'magit-todos)
 
-(require-package 'fullframe)
-(with-eval-after-load 'magit
-  (fullframe magit-status magit-mode-quit-window))
+(add-hook 'git-commit-mode-hook 'goto-address-mode)
+
+;; (require-package 'fullframe)
+;; (with-eval-after-load 'magit
+;;   (fullframe magit-status magit-mode-quit-window))
 
 ;; (when (maybe-require-package 'git-commit)
 ;;   (add-hook 'git-commit-mode-hook 'goto-address-mode))

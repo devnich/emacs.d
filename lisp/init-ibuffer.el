@@ -7,9 +7,13 @@
 ;;; Code:
 
 ;;; This closes all other frames (DD)
+;;; Old version:
 ;; (require-package 'fullframe)
 ;; (with-eval-after-load 'ibuffer
 ;;  (fullframe ibuffer ibuffer-quit))
+;;; New version:
+;; (sanityinc/fullframe-mode 'ibuffer-mode)
+
 
 (require-package 'ibuffer-vc)
 
