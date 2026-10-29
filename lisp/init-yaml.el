@@ -3,7 +3,7 @@
 ;;; Code:
 
 (when (maybe-require-package 'yaml-mode)
-  (add-auto-mode 'yaml-mode "\\.yml\\.erb\\'")
+  (add-auto-mode 'yaml-mode "\\.yml\\.erb\\.condarc\\'")
   (add-hook 'yaml-mode-hook 'goto-address-prog-mode))
 
 

@@ -86,6 +86,9 @@
 (setq debug-on-message "Making tags completion table")
 (setq debug-on-message "Key sequence C-c ESC starts with non-prefix key C-c")
 
+;;; Debug EOF
+(setq debug-on-message "End of file during parsing")
+
 ;;; Save desktop on exit
 (desktop-save-mode 1)
 ;; (setq desktop-save t)

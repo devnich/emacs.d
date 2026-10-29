@@ -7,6 +7,7 @@
   (with-eval-after-load 'whitespace-cleanup-mode
     (add-to-list 'whitespace-cleanup-mode-ignore-modes 'markdown-mode)))
 
+;;; Consider transitioning to poly-markdown. Consult ESS config.
 
 (provide 'init-markdown)
 ;;; init-markdown.el ends here

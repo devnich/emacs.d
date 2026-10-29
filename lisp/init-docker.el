@@ -9,7 +9,7 @@
   (sanityinc/fullframe-mode 'docker-network-mode)
   (sanityinc/fullframe-mode 'docker-container-mode))
 (maybe-require-package 'dockerfile-mode)
-(maybe-require-package 'docker-compose-mode)
+;; (maybe-require-package 'docker-compose-mode)
 
 
 (provide 'init-docker)

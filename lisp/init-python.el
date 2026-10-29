@@ -14,7 +14,7 @@
 
 ;; (setq python-shell-interpreter "python3")
 
-(require-package 'pip-requirements)
+;;(require-package 'pip-requirements)
 
 ;; (when (maybe-require-package 'flymake-ruff)
 ;;   (defun sanityinc/flymake-ruff-maybe-enable ()
@@ -42,7 +42,7 @@
   (conda-env-initialize-interactive-shells)
 
   ;; if you want eshell support, include:
-  (conda-env-initialize-eshell)
+  ;; (conda-env-initialize-eshell)
 
   ;; Auto-activate environment if we find an environment.yml file. This produces
   ;; annoying message spam every time a file opens:
